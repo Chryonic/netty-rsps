@@ -1,0 +1,22 @@
+1. Garbage Collect everything (null everything and collect it all).
+2. Render NPCs, Objects, Models, Items, Players.
+3. Add the World into a 
+4. Viewport.
+5. Item on Ground.
+6. Item in Inventory/Armour.
+7. Add all models into a "Group" called ??? Example: first row is filled with NPCs, second row filled with Objects, third row filled with Players.
+8. Cache.
+9. Types of tiles: ???
+10. Draw anything (a hill, valley, mountain, ).
+11. OnDemand -> open, request/ask, fetch, receive, use, close.
+12. Rotate models.
+13. Camera (direction, rotate, ).
+14. Region shown, region not shown - make it flexible to see anything by making the viewport larger.
+15. Brightness/shadows.
+16. Sun.
+17. Animate models.
+18. Read the model files (vertexes, lines, etc.).
+19. Moon.
+20. Textures (Water, Snow, Leafs, Ground, ) - movement as well.
+21. Entity (Player (this and other) and NPC), appearance, chat, hit, etc., updating.
+22. 
