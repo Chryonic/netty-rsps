@@ -1,9 +1,10 @@
 package com.runescape.revised.content.dialogue.impl;
 
 import com.runescape.revised.content.dialogue.DialogueOption;
-import com.runescape.revised.content.dialogue.NPCDialogue;
+import com.runescape.revised.content.dialogue.DialogueType;
+import com.runescape.revised.content.dialogue.EntityDialogue;
 
-public class Hans extends NPCDialogue {
+public class Hans extends EntityDialogue {
 
 	@Override
 	public short getID() {
@@ -27,5 +28,11 @@ public class Hans extends NPCDialogue {
 	public void executeDialogue() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public DialogueType getDialogueType() {
+		// TODO Auto-generated method stub
+		return DialogueType.NPC;
 	}
 }
