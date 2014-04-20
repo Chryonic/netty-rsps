@@ -1,8 +1,8 @@
 package com.runescape.revised.server;
 
 import com.runescape.revised.system.System;
-import com.runescape.revised.thread.ContentThread;
-import com.runescape.revised.thread.IOThread;
+// import com.runescape.revised.thread.ContentThread;
+// import com.runescape.revised.thread.IOThread;
 import com.sun.jmx.remote.internal.ArrayQueue;
 
 public abstract class GameServer {
@@ -14,12 +14,12 @@ public abstract class GameServer {
 	// Difference between a Pool, a List, and a Queue of Systems.
 	
 	public GameServer() {
-		byte coreAmount = (byte) Runtime.getRuntime().availableProcessors();
+		/** byte coreAmount = (byte) Runtime.getRuntime().availableProcessors();
 		for (byte b = 0; b <= coreAmount; b++) {
 			Thread[] thread = new Thread[b];
 			thread[0] = new IOThread(); // Networking/IO Thread
 			thread[1] = new ContentThread(); // Content Thread
-		}
+		} */
 		// this.setSystemQueue(new ArrayQueue<System>(0));
 	}
 
