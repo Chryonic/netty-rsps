@@ -3,57 +3,28 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.logic.net.packets.PacketBuffer;
 import com.runescape.revised.logic.net.packets.VariableType;
-import com.runescape.revised.logic.net.packets.codec.game.GameDecoder;
+import com.runescape.revised.logic.net.packets.codec.login.ConnectionType;
 import com.runescape.revised.logic.net.packets.codec.login.Login;
+import com.runescape.revised.logic.net.packets.codec.login.LoginDecoder;
 import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
-import com.runescape.util.ISAACCipher;
-import com.runescape.util.Misc;
 
 public class UserAuthentication extends LoginPacket {
 
 	@Override
 	public void executePacket(ChannelBuffer channelBuffer, Channel channel) {
 		// TODO Auto-generated method stub
-		if (channelBuffer.readableBytes() < 2) {
-			return;
-		}
-		int loginType = channelBuffer.readByte();
-		if (loginType != 16 && loginType != 18) {
-			System.out.println("Invalid login type: " + loginType);
-			//channel.close();
-			//return null;
-		}
-		//System.out.println("Login type = "+loginType);
-		int blockLength = channelBuffer.readByte() & 0xff;
-		if (channelBuffer.readableBytes() < blockLength) {
-			return;
-		}
-		
+		/** System.out.println("Setting up UserAuthentication packet..");
 		channelBuffer.readByte();
-		
-		@SuppressWarnings("unused")
-		int clientVersion = channelBuffer.readShort();
-		/*if (clientVersion != 317) {
-			System.out.println("Invalid client version: " + clientVersion);
-			channel.close();
-			return null;
-		}*/
-		
+		System.out.println("Read byte.");
+		channelBuffer.readShort();
+		System.out.println("Client version is approved");
 		channelBuffer.readByte();
-		
 		for (int i = 0; i < 9; i++)
 			channelBuffer.readInt();
-		
-		
 		channelBuffer.readByte();
-		
-		int rsaOpcode = channelBuffer.readByte();
-		if (rsaOpcode != 10) {
-			System.out.println("Unable to decode RSA block properly!");
-			channel.close();
-			return;
-		}
+		channelBuffer.readByte();
 		long clientHalf = channelBuffer.readLong();
 		long serverHalf = channelBuffer.readLong();
 		int[] isaacSeed = { (int) (clientHalf >> 32), (int) clientHalf, (int) (serverHalf >> 32), (int) serverHalf };
@@ -64,14 +35,19 @@ public class UserAuthentication extends LoginPacket {
 		int version = channelBuffer.readInt();
 		String name = Misc.formatPlayerName(Misc.getRS2String(channelBuffer));
 		String pass = Misc.getRS2String(channelBuffer);
-		channel.getPipeline().replace("decoder", "decoder", new GameDecoder(inCipher));
-		new Login(channel, inCipher, outCipher, (short) version, name, pass);
+		channel.getPipeline().replace("decoder", "decoder", new GameDecoder(inCipher)); */
+		System.out.println("Now logging in...");
+		channel.write(new PacketBuffer().writeByte((byte) 2).writeByte((byte) 0).writeByte((byte) 0));
+		new Login(channel/*, (short) version, name, pass*/);
 	}
 
 	@Override
 	public short getOpcode() {
 		// TODO Auto-generated method stub
-		return 0;
+		if (LoginDecoder.getConnectionType() == ConnectionType.NEW_CONNECTION) {
+			return 16;
+		}
+		return 18;
 	}
 
 	@Override
