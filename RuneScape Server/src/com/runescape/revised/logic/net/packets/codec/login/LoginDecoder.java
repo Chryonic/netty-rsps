@@ -12,19 +12,17 @@ import com.runescape.revised.logic.net.packets.codec.login.impl.UserAuthenticati
 public class LoginDecoder extends FrameDecoder {
 	
 	private LoginState loginState;
+	private static ConnectionType connectionType;
 
 	@Override
 	protected Object decode(ChannelHandlerContext chc, Channel channel, ChannelBuffer channelBuffer) throws Exception {
-		this.setLoginState(LoginState.CONNECTED);
-		if(!channel.isConnected()) {
+		if (!channel.isConnected()) {
 			return null;
 		}
-		switch (this.getLoginState()) {
-		case CONNECTED:
-			PacketSystem.getPacketSystem().throwPacket(new Request(), channelBuffer, channel);
-		case LOGGED_IN:
-			PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channelBuffer, channel);
-		}
+		System.out.println("Throwing Request login packet");
+		PacketSystem.getPacketSystem().throwPacket(new Request(), channelBuffer, channel);
+		System.out.println("Throwing UserAuthentication login packet");
+		PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channelBuffer, channel);
 		return null;
 	}
 
@@ -34,5 +32,13 @@ public class LoginDecoder extends FrameDecoder {
 
 	public LoginState getLoginState() {
 		return this.loginState;
+	}
+
+	public static void setConnectionType(ConnectionType connectionType) {
+		LoginDecoder.connectionType = connectionType;
+	}
+
+	public static ConnectionType getConnectionType() {
+		return LoginDecoder.connectionType;
 	}
 }

@@ -3,21 +3,26 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.logic.net.packets.Packet;
 import com.runescape.revised.logic.net.packets.VariableType;
-import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
+import com.runescape.revised.logic.net.packets.codec.login.ConnectionType;
+import com.runescape.revised.logic.net.packets.codec.login.LoginDecoder;
+// import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
 
-public class Request extends LoginPacket {
+public class Request extends Packet {
 
 	@Override
 	public void executePacket(ChannelBuffer channelBuffer, Channel channel) {
 		// TODO Auto-generated method stub
-		
+		LoginDecoder.setConnectionType(ConnectionType.LOGIN);
+		channelBuffer.readUnsignedByte();
+		channelBuffer.readUnsignedByte();
 	}
 
 	@Override
 	public short getOpcode() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 14;
 	}
 
 	@Override

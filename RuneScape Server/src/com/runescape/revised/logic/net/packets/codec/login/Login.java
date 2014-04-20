@@ -4,7 +4,6 @@ import org.jboss.netty.channel.Channel;
 
 import com.runescape.revised.client.GameClient;
 import com.runescape.revised.logic.net.packets.PacketBuffer;
-import com.runescape.util.ISAACCipher;
 
 public class Login {
 	
@@ -12,11 +11,9 @@ public class Login {
 	private String password;
 	private short revision;
 
-	public Login(Channel channel, ISAACCipher in, ISAACCipher out, short version, String name, String pass) {
-		byte returnCode = 2;
+	public Login(Channel channel) {
+		// channel.write(new PacketBuffer().writeByte((byte) 2).writeByte((byte) 0).writeByte((byte) 0));
 		new GameClient(channel, -1);
-		channel.write(new PacketBuffer().writeByte((byte) returnCode));
-		
 	}
 
 	public void setUsername(String username) {
