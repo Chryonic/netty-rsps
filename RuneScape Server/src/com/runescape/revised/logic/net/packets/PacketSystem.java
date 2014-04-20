@@ -1,8 +1,5 @@
 package com.runescape.revised.logic.net.packets;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 
@@ -11,24 +8,11 @@ import com.runescape.revised.logic.LogicSystem;
 public class PacketSystem extends LogicSystem {
 
 	private static PacketSystem packetSystem;
-	private List<Packet> packetList;
 	
-	PacketSystem() {
-		if (PacketSystem.getPacketSystem() == null) {
-			new PacketSystem();
-		}
-		this.setPacketList(new ArrayList<Packet>());
-	}
-	
-	public void addPacket(Packet packet) {
-		this.getPacketList().add(packet);
-	}
-	
-	public void removePacket(Packet packet) {
-		this.getPacketList().remove(packet);
-	}
+	public PacketSystem() {}
 	
 	public void throwPacket(Packet packet, ChannelBuffer channelBuffer, Channel channel) {
+		System.out.println("Throwing packet " + packet.getOpcode());
 		packet.executePacket(channelBuffer, channel);
 	}
 
@@ -37,14 +21,9 @@ public class PacketSystem extends LogicSystem {
 	}
 
 	public static PacketSystem getPacketSystem() {
+		if (PacketSystem.packetSystem == null) {
+			PacketSystem.setPacketSystem(new PacketSystem());
+		}
 		return PacketSystem.packetSystem;
-	}
-
-	public void setPacketList(List<Packet> packetList) {
-		this.packetList = packetList;
-	}
-
-	public List<Packet> getPacketList() {
-		return this.packetList;
 	}
 }
