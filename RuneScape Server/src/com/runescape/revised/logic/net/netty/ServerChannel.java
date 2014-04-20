@@ -5,6 +5,10 @@ import org.jboss.netty.channel.Channel;
 public class ServerChannel {
 
 	private Channel channel;
+	
+	public ServerChannel(Channel channel) {
+		this.setChannel(channel);
+	}
 
 	public void setChannel(Channel channel) {
 		this.channel = channel;

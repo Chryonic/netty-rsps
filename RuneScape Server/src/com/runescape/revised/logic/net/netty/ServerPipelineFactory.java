@@ -5,6 +5,8 @@ import org.jboss.netty.channel.ChannelPipelineFactory;
 import org.jboss.netty.channel.DefaultChannelPipeline;
 
 import com.runescape.net.ChannelHandler;
+import com.runescape.revised.logic.net.netty.coding.Encoder;
+import com.runescape.revised.logic.net.netty.coding.LoginDecoder;
 
 public class ServerPipelineFactory implements ChannelPipelineFactory {
 
