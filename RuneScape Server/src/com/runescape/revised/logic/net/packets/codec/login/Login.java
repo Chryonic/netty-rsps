@@ -3,7 +3,6 @@ package com.runescape.revised.logic.net.packets.codec.login;
 import org.jboss.netty.channel.Channel;
 
 import com.runescape.revised.client.GameClient;
-import com.runescape.revised.logic.net.packets.PacketBuffer;
 
 public class Login {
 	
@@ -12,7 +11,6 @@ public class Login {
 	private short revision;
 
 	public Login(Channel channel) {
-		// channel.write(new PacketBuffer().writeByte((byte) 2).writeByte((byte) 0).writeByte((byte) 0));
 		new GameClient(channel, -1);
 	}
 
