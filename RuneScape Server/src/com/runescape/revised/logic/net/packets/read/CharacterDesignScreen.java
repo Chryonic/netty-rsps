@@ -1,12 +1,15 @@
 package com.runescape.revised.logic.net.packets.read;
 
+import org.jboss.netty.buffer.ChannelBuffer;
+import org.jboss.netty.channel.Channel;
+
 import com.runescape.revised.logic.net.packets.Packet;
 import com.runescape.revised.logic.net.packets.VariableType;
 
 public class CharacterDesignScreen extends Packet {
 
 	@Override
-	public void executePacket() {
+	public void executePacket(ChannelBuffer channelBuffer, Channel channel) {
 		// TODO Auto-generated method stub
 		// stream.writeWordBigEndian(aBoolean1047 ? 0 : 1);
 		// for(int i1 = 0; i1 < 7; i1++)

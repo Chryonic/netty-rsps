@@ -6,6 +6,8 @@ public class PacketBuffer {
 	
 	private ChannelBuffer channelBuffer;
 	private static final int[] BIT_MASK_OUT = new int[32];
+	private VariableType variableType;
+	private short opcode;
 	
 	static {
 		for(int i = 0; i < BIT_MASK_OUT.length; i++) {
@@ -181,5 +183,21 @@ public class PacketBuffer {
 
 	public ChannelBuffer getChannelBuffer() {
 		return this.channelBuffer;
+	}
+
+	public void setVariableType(VariableType variableType) {
+		this.variableType = variableType;
+	}
+
+	public VariableType getVariableType() {
+		return this.variableType;
+	}
+
+	public void setOpcode(short opcode) {
+		this.opcode = opcode;
+	}
+
+	public short getOpcode() {
+		return this.opcode;
 	}
 }

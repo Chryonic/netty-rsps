@@ -1,6 +1,7 @@
 package com.runescape;
 
 import com.runescape.revised.garbagecollector.GarbageCollector;
+import com.runescape.revised.logic.net.netty.Netty;
 import com.runescape.revised.server.GameServer;
 import com.runescape.revised.server.SpawnServer;
 
@@ -10,7 +11,8 @@ public class Main {
 	
 	public Main() {
 		this.setGameServer(new SpawnServer());
-		GarbageCollector.main(null);
+		new GarbageCollector();
+		new Netty();
 	}
 	
 	public static void main(String[] args) {
