@@ -2,7 +2,7 @@ package com.runescape.revised.garbagecollector;
 
 public class GarbageCollector {
 
-	public static void main(String[] args) {
+	public GarbageCollector() {
 		System.gc();
 		System.runFinalization();
 	}

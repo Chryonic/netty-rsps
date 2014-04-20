@@ -18,7 +18,7 @@ public class ServerChannelHandler extends SimpleChannelHandler {
 	
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
-		PacketSystem.getPacketSystem().throwPacket((Packet) e.getMessage());
+		PacketSystem.getPacketSystem().throwPacket((Packet) e.getMessage(), this.getServerChannel().getChannelBuffer(), ctx.getChannel());
 	}
 	
 	@Override
