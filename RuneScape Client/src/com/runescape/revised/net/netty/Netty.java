@@ -15,6 +15,7 @@ public class Netty {
 		this.setClientBootstrap(new ClientBootstrap((ChannelFactory) new NioClientSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool())));
 		this.getClientBootstrap().setPipelineFactory(new ClientPipelineFactory());
 		this.getClientBootstrap().bind(new InetSocketAddress(43594));
+		System.out.println("Client Bootstrap set up.");
 	}
 
 	public void setClientBootstrap(ClientBootstrap clientBootstrap) {
