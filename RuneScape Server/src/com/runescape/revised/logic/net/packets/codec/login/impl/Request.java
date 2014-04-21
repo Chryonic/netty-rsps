@@ -17,6 +17,7 @@ public class Request extends Packet {
 		LoginDecoder.setConnectionType(ConnectionType.LOGIN);
 		channelBuffer.readUnsignedByte();
 		channelBuffer.readUnsignedByte();
+		LoginDecoder.setConnectionType(ConnectionType.NEW_CONNECTION);
 	}
 
 	@Override
