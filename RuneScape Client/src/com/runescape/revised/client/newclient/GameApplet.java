@@ -23,10 +23,10 @@ import com.runescape.revised.menu.Menu;
 public class GameApplet extends JApplet implements MouseListener, MouseMotionListener, KeyListener, WindowListener {
 
 	private static final long serialVersionUID = 1L;
-	private ChatBox chatBox = new ChatBox();
-	private MapArea mapArea = new MapArea();
-	private TabArea tabArea = new TabArea();
-	private Compass compass = new Compass();
+	// private ChatBox chatBox = new ChatBox();
+	// private MapArea mapArea = new MapArea();
+	// private TabArea tabArea = new TabArea();
+	// private Compass compass = new Compass();
 	// private GameArea gameArea;
 	private Memory memory = Memory.LOW;
 	private RevisionType revisionType = RevisionType.THREE_ONE_SEVEN;
@@ -34,10 +34,10 @@ public class GameApplet extends JApplet implements MouseListener, MouseMotionLis
 	
 	@Override
 	public void paint(Graphics graphics) {
-		graphics.drawImage(this.getChatBox().getImage(), this.getChatBox().getLocation().getX(), this.getChatBox().getLocation().getY(), null);
-		graphics.drawImage(this.getMapArea().getImage(), this.getMapArea().getLocation().getX(), this.getMapArea().getLocation().getY(), null);
-		graphics.drawImage(this.getTabArea().getImage(), this.getTabArea().getLocation().getX(), this.getTabArea().getLocation().getY(), null);
-		graphics.drawImage(this.getCompass().getImage(), this.getCompass().getLocation().getX(), this.getCompass().getLocation().getY(), null);
+		// graphics.drawImage(this.getChatBox().getImage(), this.getChatBox().getLocation().getX(), this.getChatBox().getLocation().getY(), null);
+		// graphics.drawImage(this.getMapArea().getImage(), this.getMapArea().getLocation().getX(), this.getMapArea().getLocation().getY(), null);
+		// graphics.drawImage(this.getTabArea().getImage(), this.getTabArea().getLocation().getX(), this.getTabArea().getLocation().getY(), null);
+		// graphics.drawImage(this.getCompass().getImage(), this.getCompass().getLocation().getX(), this.getCompass().getLocation().getY(), null);
 		// graphics.drawImage(this.getGameArea().getImage(), this.getGameArea().getLocation().getX(), this.getGameArea().getLocation().getY(), null);
 	}
 
@@ -144,7 +144,7 @@ public class GameApplet extends JApplet implements MouseListener, MouseMotionLis
 		
 	}
 	
-	public void setChatBox(ChatBox chatBox) {
+	/** public void setChatBox(ChatBox chatBox) {
 		this.chatBox = chatBox;
 	}
 
@@ -174,7 +174,7 @@ public class GameApplet extends JApplet implements MouseListener, MouseMotionLis
 
 	public Compass getCompass() {
 		return this.compass;
-	}
+	} */
 
 	/** public void setGameArea(GameArea gameArea) {
 		this.gameArea = gameArea;
