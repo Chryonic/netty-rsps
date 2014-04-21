@@ -1,7 +1,3 @@
-/* MapLoader - Decompiled by JODE
- * Visit http://jode.sourceforge.net/
- */
-
 final class MapLoader
 {
     private static int anInt123 = (int) (Math.random() * 17.0) - 8;
