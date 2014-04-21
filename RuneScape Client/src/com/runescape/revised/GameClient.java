@@ -5,7 +5,6 @@ import java.util.Queue;
 
 import com.runescape.revised.interfaces.Interface;
 import com.runescape.revised.media.tabarea.Tab;
-import com.sun.jmx.remote.internal.ArrayQueue;
 
 public class GameClient {
 
@@ -15,16 +14,15 @@ public class GameClient {
 	private Map<String, String> chatMap;
 	private Queue<String> chatQueue;
 	
-	@SuppressWarnings("unchecked")
 	public GameClient() {
-		this.setSystemQueue((Queue<System>) new ArrayQueue<System>(0));
+		// this.setSystemQueue((Queue<System>) new ArrayQueue<System>(0));
 		// new Thread(new AppletThread()).start();
-		byte coreAmount = (byte) Runtime.getRuntime().availableProcessors();
+		/** byte coreAmount = (byte) Runtime.getRuntime().availableProcessors();
 		for (byte b = 0; b <= coreAmount; b++) {
 			Thread[] threadAmount = new Thread[b];
 			threadAmount[0].start();
 			threadAmount[1].start();
-		}
+		} */
 	}
 
 	public void setSystemQueue(Queue<System> systemQueue) {
