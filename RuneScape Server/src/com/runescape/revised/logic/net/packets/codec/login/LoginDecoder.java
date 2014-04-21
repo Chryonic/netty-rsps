@@ -7,7 +7,7 @@ import org.jboss.netty.handler.codec.frame.FrameDecoder;
 
 import com.runescape.revised.logic.net.packets.PacketSystem;
 import com.runescape.revised.logic.net.packets.codec.login.impl.Request;
-import com.runescape.revised.logic.net.packets.codec.login.impl.UserAuthentication;
+import com.runescape.revised.logic.net.packets.codec.login.impl.Connect;
 
 public class LoginDecoder extends FrameDecoder {
 	
@@ -22,7 +22,7 @@ public class LoginDecoder extends FrameDecoder {
 		System.out.println("Throwing Request login packet");
 		PacketSystem.getPacketSystem().throwPacket(new Request(), channelBuffer, channel);
 		System.out.println("Throwing UserAuthentication login packet");
-		PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channelBuffer, channel);
+		PacketSystem.getPacketSystem().throwPacket(new Connect(), channelBuffer, channel);
 		return null;
 	}
 
