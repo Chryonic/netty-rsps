@@ -6,14 +6,45 @@ import java.util.Queue;
 import com.runescape.revised.interfaces.Interface;
 import com.runescape.revised.media.tabarea.Tab;
 
+/**
+ * The GameClient class used to represent
+ * a Client in RuneScape.
+ * 
+ * @author josh
+ *
+ */
 public class GameClient {
 
+	/**
+	 * The Queue of Systems.
+	 */
 	private Queue<System> systemQueue;
+	
+	/**
+	 * A Pool of Systems.
+	 */
 	// private Pool<System> systemPool;
+	
+	/**
+	 * A Map of the interfaces for each
+	 * tab.
+	 */
 	private Map<Tab, Interface> tabMap;
+	
+	/**
+	 * A Map for the messages and all the
+	 * player names.
+	 */
 	private Map<String, String> chatMap;
+	
+	/**
+	 * A Queue of chat messages.
+	 */
 	private Queue<String> chatQueue;
 	
+	/**
+	 * The GameClient constructor.
+	 */
 	public GameClient() {
 		// this.setSystemQueue((Queue<System>) new ArrayQueue<System>(0));
 		// new Thread(new AppletThread()).start();

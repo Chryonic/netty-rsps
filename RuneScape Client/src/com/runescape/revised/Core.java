@@ -1,6 +1,11 @@
 package com.runescape.revised;
 
-// consists of core parts for a server
+/**
+ * Consists of core parts for a server.
+ * 
+ * @author josh
+ *
+ */
 public class Core {
 
 }

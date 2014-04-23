@@ -1,6 +1,25 @@
 package com.runescape.revised;
 
+/**
+ * The stage for the GameClient.
+ * 
+ * @author josh
+ *
+ */
 public enum GameStage {
 
-	LOADING, LOGIN, GAME;
+	/**
+	 * The LOADING stage.
+	 */
+	LOADING,
+	
+	/**
+	 * The LOGIN stage.
+	 */
+	LOGIN,
+	
+	/**
+	 * The GAME stage.
+	 */
+	GAME;
 }
