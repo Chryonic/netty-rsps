@@ -1,6 +1,25 @@
 package com.runescape.revised;
 
+/**
+ * The type of language people speak.
+ * 
+ * @author josh
+ *
+ */
 public enum LanguageType {
 
-	ENGLISH, SPANISH, PORTUGUESE, CHINESE, GERMAN;
+	/**
+	 * The English language.
+	 */
+	ENGLISH, SPANISH, 
+	
+	/**
+	 * The Portuguese language.
+	 */
+	PORTUGUESE, CHINESE,
+	
+	/**
+	 * The German language.
+	 */
+	GERMAN;
 }

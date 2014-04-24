@@ -9,17 +9,17 @@ package com.runescape.revised;
 public enum GameStage {
 
 	/**
-	 * The LOADING stage.
+	 * The loading stage.
 	 */
 	LOADING,
 	
 	/**
-	 * The LOGIN stage.
+	 * The login stage.
 	 */
 	LOGIN,
 	
 	/**
-	 * The GAME stage.
+	 * The game stage.
 	 */
 	GAME;
 }

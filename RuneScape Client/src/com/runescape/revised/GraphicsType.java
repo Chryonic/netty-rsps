@@ -1,6 +1,20 @@
 package com.runescape.revised;
 
+/**
+ * The type of graphics.
+ * 
+ * @author josh
+ *
+ */
 public enum GraphicsType {
 
-	TWO_D, THREE_D;
+	/**
+	 * The TWO_D graphic.
+	 */
+	TWO_D,
+	
+	/**
+	 * The THREE_D graphic.
+	 */
+	THREE_D;
 }

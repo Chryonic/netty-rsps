@@ -56,34 +56,82 @@ public class GameClient {
 		} */
 	}
 
+	/**
+	 * The setter for the SystemQueue instance.
+	 * 
+	 * @param systemQueue
+	 * 			The Queue of Systems.
+	 */
 	public void setSystemQueue(Queue<System> systemQueue) {
 		this.systemQueue = systemQueue;
 	}
 
+	/**
+	 * The getter for the SystemQueue instance.
+	 * 
+	 * @return systemQueue
+	 * 			The Queue of Systems.
+	 */
 	public Queue<System> getSystemQueue() {
 		return this.systemQueue;
 	}
 
+	/**
+	 * The setter for the Map instance.
+	 * 
+	 * @return tabMap
+	 * 			The Map.
+	 */
 	public void setTabMap(Map<Tab, Interface> tabMap) {
 		this.tabMap = tabMap;
 	}
 
+	/**
+	 * The getter for the Map instance.
+	 * 
+	 * @return tabMap
+	 * 			The Map instance.
+	 */
 	public Map<Tab, Interface> getTabMap() {
 		return this.tabMap;
 	}
 
+	/**
+	 * The setter for the Map instance.
+	 * 
+	 * @return chatMap
+	 * 			The Map parameter.
+	 */
 	public void setChatMap(Map<String, String> chatMap) {
 		this.chatMap = chatMap;
 	}
 
+	/**
+	 * The getter for the Map instance.
+	 * 
+	 * @return chatMap
+	 * 			The Map instance.
+	 */
 	public Map<String, String> getChatMap() {
 		return this.chatMap;
 	}
 
+	/**
+	 * The getter for the Queue instance.
+	 * 
+	 * @return chatQueue
+	 * 			The Queue parameter.
+	 */
 	public void setChatQueue(Queue<String> chatQueue) {
 		this.chatQueue = chatQueue;
 	}
 
+	/**
+	 * The getter for the Queue instance.
+	 * 
+	 * @return chatQueue
+	 * 			The Queue instance.
+	 */
 	public Queue<String> getChatQueue() {
 		return this.chatQueue;
 	}
