@@ -18,6 +18,7 @@ public class Damage {
 	 * The setter for the damageAmount.
 	 * 
 	 * @param damageAmount
+	 * 			The damage amount.
 	 */
 	public void setDamageAmount(byte damageAmount) {
 		this.damageAmount = damageAmount;
@@ -27,7 +28,7 @@ public class Damage {
 	 * The getter for the damageAmount.
 	 * 
 	 * @return damageAmount
-	 * 			The damageAmount 
+	 * 			The damage amount. 
 	 */
 	public byte getDamageAmount() {
 		return damageAmount;

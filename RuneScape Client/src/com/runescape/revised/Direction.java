@@ -9,43 +9,43 @@ package com.runescape.revised;
 public enum Direction {
 
 	/**
-	 * The NORTH direction.
+	 * The north direction.
 	 */
 	NORTH,
 	
 	/**
-	 * The SOUTH direction.
+	 * The south direction.
 	 */
 	SOUTH,
 	
 	/**
-	 * The EAST direction.
+	 * The east direction.
 	 */
 	EAST,
 	
 	/**
-	 * The WEST direction.
+	 * The west direction.
 	 */
 	WEST,
 
 	/**
-	 * The NORTH_EAST direction.
+	 * The northeast direction.
 	 */
-	NORTH_EAST,
+	NORTHEAST,
 
 	/**
-	 * The NORTH_WEST direction.
+	 * The northwest direction.
 	 */
-	NORTH_WEST,
+	NORTHWEST,
 
 	/**
-	 * The SOUTH_EAST direction.
+	 * The southeast direction.
 	 */
-	SOUTH_EAST,
+	SOUTHEAST,
 
 	/**
-	 * The SOUTH_WEST direction.
+	 * The southwest direction.
 	 */
-	SOUTH_WEST;
+	SOUTHWEST;
 	
 }
