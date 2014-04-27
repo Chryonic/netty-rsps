@@ -8,7 +8,6 @@ public class Login {
 	
 	private String username;
 	private String password;
-	private short revision;
 
 	public Login(Channel channel) {
 		new GameClient(channel, -1);
@@ -28,13 +27,5 @@ public class Login {
 
 	public String getPassword() {
 		return this.password;
-	}
-
-	public void setRevision(short revision) {
-		this.revision = revision;
-	}
-
-	public short getRevision() {
-		return this.revision;
 	}
 }
