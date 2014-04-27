@@ -1,9 +1,10 @@
 package com.runescape;
 
-// import com.runescape.revised.garbagecollector.GarbageCollector;
-// import com.runescape.revised.logic.net.netty.Netty;
-// import com.runescape.revised.logic.net.packets.Packet;
-// import com.runescape.revised.server.GameServer;
+import com.runescape.revised.garbagecollector.GarbageCollector;
+import com.runescape.revised.logic.net.netty.Netty;
+import com.runescape.revised.logic.net.packets.Packet;
+import com.runescape.revised.server.GameServer;
+import com.runescape.util.Timer;
 
 public class Main {
 	
@@ -13,22 +14,23 @@ public class Main {
 	private static Main main;
 	
 	/**
-	 * The gameserver instance.
+	 * The game server instance.
 	 */
-	// private GameServer gameServer;
+	private GameServer gameServer;
 	
 	/**
 	 * The packet instance.
 	 */
-	// private Packet[] packets;
+	private Packet[] packets;
 	
 	/**
-	 * The main constructor.
+	 * The constructor.
 	 */
 	public Main() {
-		// this.setGameServer();
-		// new GarbageCollector();
-		// new Netty();
+		Timer timer = new Timer();
+		new GarbageCollector();
+		new Netty();
+		System.out.println("RuneScape Server started in " + timer.toString());
 	}
 	
 	public static void main(String[] args) {
@@ -46,7 +48,7 @@ public class Main {
 		return Main.main;
 	}
 
-	/** public void setGameServer(GameServer gameServer) {
+	public void setGameServer(GameServer gameServer) {
 		this.gameServer = gameServer;
 	}
 
@@ -60,5 +62,5 @@ public class Main {
 
 	public Packet[] getPackets() {
 		return this.packets;
-	} */
+	}
 }
