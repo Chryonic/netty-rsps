@@ -7,22 +7,23 @@ import org.jboss.netty.handler.codec.frame.FrameDecoder;
 
 import com.runescape.revised.logic.net.packets.PacketSystem;
 import com.runescape.revised.logic.net.packets.codec.login.impl.Request;
-import com.runescape.revised.logic.net.packets.codec.login.impl.Connect;
+import com.runescape.revised.logic.net.packets.codec.login.impl.UserAuthentication;
 
 public class LoginDecoder extends FrameDecoder {
 	
 	private LoginState loginState;
 	private static ConnectionType connectionType;
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.jboss.netty.handler.codec.frame.FrameDecoder#decode(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.Channel, org.jboss.netty.buffer.ChannelBuffer)
+	 */
 	@Override
 	protected Object decode(ChannelHandlerContext chc, Channel channel, ChannelBuffer channelBuffer) throws Exception {
-		if (!channel.isConnected()) {
-			return null;
-		}
 		System.out.println("Throwing Request login packet");
 		PacketSystem.getPacketSystem().throwPacket(new Request(), channelBuffer, channel);
 		System.out.println("Throwing UserAuthentication login packet");
-		PacketSystem.getPacketSystem().throwPacket(new Connect(), channelBuffer, channel);
+		PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channelBuffer, channel);
 		return null;
 	}
 

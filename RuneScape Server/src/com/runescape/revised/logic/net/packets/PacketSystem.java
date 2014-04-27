@@ -12,7 +12,6 @@ public class PacketSystem extends LogicSystem {
 	public PacketSystem() {}
 	
 	public void throwPacket(Packet packet, ChannelBuffer channelBuffer, Channel channel) {
-		System.out.println("Throwing packet " + packet.getOpcode());
 		packet.executePacket(channelBuffer, channel);
 	}
 

@@ -1,5 +1,7 @@
 package com.runescape.revised.logic.net.packets.codec.game;
 
-public class GamePacket {
+import com.runescape.revised.logic.net.packets.Packet;
+
+public abstract class GamePacket extends Packet {
 
 }
