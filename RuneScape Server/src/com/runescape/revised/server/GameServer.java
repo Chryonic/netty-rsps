@@ -13,7 +13,10 @@ public abstract class GameServer {
 	// system before you put it back into the Pool.
 	// Difference between a Pool, a List, and a Queue of Systems.
 	
+	private ServerBase serverBase;
+	
 	public GameServer() {
+		this.setServerBase(ServerBase.SPAWN);
 		/** byte coreAmount = (byte) Runtime.getRuntime().availableProcessors();
 		for (byte b = 0; b <= coreAmount; b++) {
 			Thread[] thread = new Thread[b];
@@ -29,6 +32,14 @@ public abstract class GameServer {
 
 	public ArrayQueue<System> getSystemQueue() {
 		return this.systemQueue;
+	}
+
+	public void setServerBase(ServerBase serverBase) {
+		this.serverBase = serverBase;
+	}
+
+	public ServerBase getServerBase() {
+		return this.serverBase;
 	}
 	
 	// public void setSystemPool(Pool<System> systemPool) {
