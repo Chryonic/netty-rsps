@@ -2,7 +2,7 @@ package com.runescape.revised.thread;
 
 import com.runescape.revised.client.ClientList;
 
-public class IOThread extends Thread {
+public class LogicThread extends Thread {
 
 	private ClientList clientList;
 
