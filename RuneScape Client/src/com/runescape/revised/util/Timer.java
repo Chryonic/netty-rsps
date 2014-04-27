@@ -1,10 +1,10 @@
 package com.runescape.revised.util;
 
-public class Benchmarker {
+public class Timer {
 
     private long startTime;
     
-    public Benchmarker() {
+    public Timer() {
             this.setStartTime(System.currentTimeMillis());
     }
 
