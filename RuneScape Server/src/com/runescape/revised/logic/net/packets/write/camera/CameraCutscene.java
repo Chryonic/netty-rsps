@@ -1,4 +1,4 @@
-package com.runescape.revised.logic.net.packets.write;
+package com.runescape.revised.logic.net.packets.write.camera;
 
 public class CameraCutscene {
 
