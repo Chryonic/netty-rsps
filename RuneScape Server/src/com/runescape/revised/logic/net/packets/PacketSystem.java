@@ -1,6 +1,5 @@
 package com.runescape.revised.logic.net.packets;
 
-import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 
 import com.runescape.revised.logic.LogicSystem;
@@ -11,8 +10,8 @@ public class PacketSystem extends LogicSystem {
 	
 	public PacketSystem() {}
 	
-	public void throwPacket(Packet packet, ChannelBuffer channelBuffer, Channel channel) {
-		packet.executePacket(channelBuffer, channel);
+	public void throwPacket(Packet packet, Channel channel) {
+		packet.executePacket(channel);
 	}
 
 	public static void setPacketSystem(PacketSystem packetSystem) {
