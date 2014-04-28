@@ -21,10 +21,12 @@ public class LoginDecoder extends FrameDecoder {
 	@Override
 	protected Object decode(ChannelHandlerContext chc, Channel channel, ChannelBuffer channelBuffer) throws Exception {
 		System.out.println("Throwing Request login packet");
-		PacketSystem.getPacketSystem().throwPacket(new Request(), channelBuffer, channel);
+		PacketSystem.getPacketSystem().throwPacket(new Request(), channel);
 		System.out.println("Throwing UserAuthentication login packet");
-		PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channelBuffer, channel);
+		PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channel);
 		return null;
+		
+		/** Not writing to the correct Channel? Use player.getServerChannel()? */
 	}
 
 	public void setLoginState(LoginState loginState) {

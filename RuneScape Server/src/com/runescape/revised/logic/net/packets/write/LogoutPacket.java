@@ -1,6 +1,5 @@
 package com.runescape.revised.logic.net.packets.write;
 
-import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 
 import com.runescape.revised.logic.net.packets.Packet;
@@ -11,7 +10,7 @@ public class LogoutPacket extends Packet {
 	// private Logout logout;
 
 	@Override
-	public void executePacket(ChannelBuffer channelBuffer, Channel channel) {
+	public void executePacket(Channel channel) {
 		// this.getLogout().resetLogout();
 	}
 

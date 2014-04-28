@@ -1,15 +1,14 @@
 package com.runescape.revised.logic.net.packets.read;
 
-import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 
-import com.runescape.revised.logic.net.packets.Packet;
 import com.runescape.revised.logic.net.packets.VariableType;
+import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
-public class LightLog extends Packet {
+public class LightLog extends GamePacket {
 
 	@Override
-	public void executePacket(ChannelBuffer channelBuffer, Channel channel) {
+	public void executePacket(Channel channel) {
 		// TODO Auto-generated method stub
 		
 	}
