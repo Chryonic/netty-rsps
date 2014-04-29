@@ -6,23 +6,15 @@ import java.util.concurrent.Executors;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
-public class Netty {
+import com.runescape.revised.logic.net.netty.pipeline.ServerPipelineFactory;
 
-	private ServerBootstrap serverBootstrap;
+public class Netty {
 	
 	public Netty() {
-		this.setServerBootstrap(new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool())));
-		this.getServerBootstrap().setPipelineFactory(new ServerPipelineFactory());
-		this.getServerBootstrap().setOption("tcpNoDelay", true);
-		this.getServerBootstrap().setOption("keepAlive", true);
-		this.getServerBootstrap().bind(new InetSocketAddress(43594));
-	}
-
-	public void setServerBootstrap(ServerBootstrap serverBootstrap) {
-		this.serverBootstrap = serverBootstrap;
-	}
-
-	public ServerBootstrap getServerBootstrap() {
-		return this.serverBootstrap;
+		ServerBootstrap serverBootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool()));
+		serverBootstrap.setPipelineFactory(new ServerPipelineFactory());
+		serverBootstrap.setOption("tcpNoDelay", true);
+		serverBootstrap.setOption("keepAlive", true);
+		serverBootstrap.bind(new InetSocketAddress(43594));
 	}
 }
