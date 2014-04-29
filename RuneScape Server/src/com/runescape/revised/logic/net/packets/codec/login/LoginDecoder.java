@@ -6,8 +6,10 @@ import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.handler.codec.frame.FrameDecoder;
 
 import com.runescape.revised.logic.net.packets.PacketSystem;
+import com.runescape.revised.logic.net.packets.codec.login.impl.Connect;
 import com.runescape.revised.logic.net.packets.codec.login.impl.Request;
-import com.runescape.revised.logic.net.packets.codec.login.impl.UserAuthentication;
+import com.runescape.revised.logic.net.packets.codec.login.impl.Reconnect;
+import com.runescape.revised.logic.net.packets.codec.login.impl.Update;
 
 public class LoginDecoder extends FrameDecoder {
 	
@@ -20,13 +22,26 @@ public class LoginDecoder extends FrameDecoder {
 	 */
 	@Override
 	protected Object decode(ChannelHandlerContext chc, Channel channel, ChannelBuffer channelBuffer) throws Exception {
-		System.out.println("Throwing Request login packet");
-		PacketSystem.getPacketSystem().throwPacket(new Request(), channel);
-		System.out.println("Throwing UserAuthentication login packet");
-		PacketSystem.getPacketSystem().throwPacket(new UserAuthentication(), channel);
+		byte opcode = (byte) channelBuffer.readUnsignedByte();
+		switch (opcode) {
+		case 14:
+			System.out.println("Throwing Request login packet");
+			PacketSystem.getPacketSystem().throwPacket(new Request(), channel);
+			break;
+		case 15:
+			System.out.println("Throwing Update login packet");
+			PacketSystem.getPacketSystem().throwPacket(new Update(), channel);
+			break;
+		case 16:
+			System.out.println("Throwing Connect login packet");
+			PacketSystem.getPacketSystem().throwPacket(new Connect(), channel);
+			break;
+		case 18:
+			System.out.println("Throwing Reconnect login packet");
+			PacketSystem.getPacketSystem().throwPacket(new Reconnect(), channel);
+			break;
+		}
 		return null;
-		
-		/** Not writing to the correct Channel? Use player.getServerChannel()? */
 	}
 
 	public void setLoginState(LoginState loginState) {

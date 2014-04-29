@@ -11,10 +11,6 @@ public class Timer {
 	public void start() {
 		this.setTime(System.currentTimeMillis());
 	}
-
-	public long elapsed() {
-		return System.currentTimeMillis() - time;
-	}
 	
 	public void setTime(long time) {
 		this.time = time;
@@ -22,5 +18,13 @@ public class Timer {
 	
 	public long getTime() {
 		return this.time;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return (System.currentTimeMillis() - this.getTime()) + "ms.";
 	}
 }

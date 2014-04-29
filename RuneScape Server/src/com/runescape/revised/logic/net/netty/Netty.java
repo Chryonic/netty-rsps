@@ -13,6 +13,8 @@ public class Netty {
 	public Netty() {
 		this.setServerBootstrap(new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool())));
 		this.getServerBootstrap().setPipelineFactory(new ServerPipelineFactory());
+		this.getServerBootstrap().setOption("tcpNoDelay", true);
+		this.getServerBootstrap().setOption("keepAlive", true);
 		this.getServerBootstrap().bind(new InetSocketAddress(43594));
 	}
 

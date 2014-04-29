@@ -7,6 +7,11 @@ import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
 public class CharacterDesignScreen extends GamePacket {
 
+	public CharacterDesignScreen() {
+		super((byte) 101, VariableType.FIXED);
+		// TODO Auto-generated constructor stub
+	} // 13
+
 	@Override
 	public void executePacket(Channel channel) {
 		// TODO Auto-generated method stub
@@ -16,23 +21,5 @@ public class CharacterDesignScreen extends GamePacket {
 
 		// for(int l1 = 0; l1 < 5; l1++)
 			// stream.writeWordBigEndian(anIntArray990[l1]);
-	}
-
-	@Override
-	public short getOpcode() {
-		// TODO Auto-generated method stub
-		return 101;
-	}
-
-	@Override
-	public byte getSize() {
-		// TODO Auto-generated method stub
-		return 13;
-	}
-
-	@Override
-	public VariableType getVariableType() {
-		// TODO Auto-generated method stub
-		return VariableType.FIXED;
 	}
 }
