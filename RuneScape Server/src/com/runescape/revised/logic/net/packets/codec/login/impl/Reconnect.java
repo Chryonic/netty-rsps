@@ -3,6 +3,7 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 import org.jboss.netty.channel.Channel;
 
 // import com.runescape.revised.logic.net.packets.PacketBuffer;
+import com.runescape.revised.logic.net.packets.VariableType;
 import com.runescape.revised.logic.net.packets.codec.game.GameDecoder;
 import com.runescape.revised.logic.net.packets.codec.login.Login;
 import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
@@ -14,13 +15,6 @@ import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
  * 
  */
 public class Reconnect extends LoginPacket {
-
-	/**
-	 * The constructor.
-	 */
-	public Reconnect() {
-		super((byte) 18, null);
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -34,5 +28,35 @@ public class Reconnect extends LoginPacket {
 		channel.getPipeline().replace("decoder", "decoder", new GameDecoder(null));
 		// player.write(new PacketBuilder(249).putByteA(1).putLEShortA(player.getIndex()).toPacket());
 		// player.write(new PacketBuilder(107).toPacket());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getOpcode()
+	 */
+	@Override
+	public short getOpcode() {
+		// TODO Auto-generated method stub
+		return 18;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getSize()
+	 */
+	@Override
+	public byte getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getVariableType()
+	 */
+	@Override
+	public VariableType getVariableType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
