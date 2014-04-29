@@ -1,10 +1,11 @@
 package com.runescape.revised.logic.net.packets;
 
 import org.jboss.netty.buffer.ChannelBuffer;
+import org.jboss.netty.buffer.ChannelBuffers;
 
 public class PacketBuffer {
 	
-	private ChannelBuffer channelBuffer;
+	private ChannelBuffer channelBuffer = ChannelBuffers.dynamicBuffer();
 	private static final int[] BIT_MASK_OUT = new int[32];
 	private VariableType variableType;
 	private short opcode;
@@ -13,6 +14,10 @@ public class PacketBuffer {
 		for(int i = 0; i < BIT_MASK_OUT.length; i++) {
 			BIT_MASK_OUT[i] = (1 << i) - 1;
 		}
+	}
+	
+	public Packet toPacket() {
+		return new Packet(this.getOpcode(), this.getVariableType());
 	}
 	
 	public PacketBuffer writeByte(byte b) {

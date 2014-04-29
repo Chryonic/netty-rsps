@@ -7,26 +7,13 @@ import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
 public class PrivateMessage extends GamePacket {
 
+	public PrivateMessage() {
+		super((byte) 126, VariableType.BYTE);
+		// TODO Auto-generated constructor stub
+	} // -1
+
 	@Override
 	public void executePacket(Channel channel) {
 		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public short getOpcode() {
-		// TODO Auto-generated method stub
-		return 126;
-	}
-
-	@Override
-	public byte getSize() {
-		// TODO Auto-generated method stub
-		return -1;
-	}
-
-	@Override
-	public VariableType getVariableType() {
-		// TODO Auto-generated method stub
-		return VariableType.BYTE;
 	}
 }
