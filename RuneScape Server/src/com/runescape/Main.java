@@ -25,12 +25,23 @@ public class Main {
 	private GameServer gameServer;
 	
 	/**
+	 * The garbage collector instance.
+	 */
+	private GarbageCollector garbageCollector;
+	
+	/**
+	 * The netty instance.
+	 */
+	private Netty netty;
+	
+	/**
 	 * The constructor.
 	 */
 	public Main() {
 		Timer timer = new Timer();
-		new GarbageCollector();
-		new Netty();
+		this.setGarbageCollector(new GarbageCollector());
+		this.setNetty(new Netty());
+		this.setGameServer(new GameServer());
 		System.out.println("RuneScape Server started in " + timer.toString());
 	}
 	
@@ -85,5 +96,45 @@ public class Main {
 	 */
 	public GameServer getGameServer() {
 		return this.gameServer;
+	}
+
+	/**
+	 * Sets the garbage collector.
+	 * 
+	 * @param garbageCollector
+	 * 			The garbage collector to set.
+	 */
+	public void setGarbageCollector(GarbageCollector garbageCollector) {
+		this.garbageCollector = garbageCollector;
+	}
+
+	/**
+	 * Gets the garbage collector.
+	 * 
+	 * @return garbageCollector
+	 * 			The garbage collector to get.
+	 */
+	public GarbageCollector getGarbageCollector() {
+		return garbageCollector;
+	}
+
+	/**
+	 * Sets the Netty networking.
+	 * 
+	 * @param netty
+	 * 			The networking to set.
+	 */
+	public void setNetty(Netty netty) {
+		this.netty = netty;
+	}
+
+	/**
+	 * Gets the Netty networking.
+	 * 
+	 * @return netty
+	 * 			The networking to get.
+	 */
+	public Netty getNetty() {
+		return netty;
 	}
 }

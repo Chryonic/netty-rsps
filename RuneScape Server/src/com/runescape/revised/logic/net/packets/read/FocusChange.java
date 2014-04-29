@@ -7,14 +7,43 @@ import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
 public class FocusChange extends GamePacket {
 
-	public FocusChange() {
-		super((byte) 3, VariableType.FIXED);
-		// TODO Auto-generated constructor stub
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#executePacket(org.jboss.netty.channel.Channel)
+	 */
 	@Override
 	public void executePacket(Channel channel) {
 		// TODO Auto-generated method stub
 		// writeShortBigEndian(int)
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getOpcode()
+	 */
+	@Override
+	public short getOpcode() {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getSize()
+	 */
+	@Override
+	public byte getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getVariableType()
+	 */
+	@Override
+	public VariableType getVariableType() {
+		// TODO Auto-generated method stub
+		return VariableType.FIXED;
 	}
 }

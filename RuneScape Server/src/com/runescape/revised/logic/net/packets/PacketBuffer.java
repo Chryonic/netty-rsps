@@ -16,10 +16,6 @@ public class PacketBuffer {
 		}
 	}
 	
-	public Packet toPacket() {
-		return new Packet(this.getOpcode(), this.getVariableType());
-	}
-	
 	public PacketBuffer writeByte(byte b) {
 		this.getChannelBuffer().writeByte(b);
 		return this;

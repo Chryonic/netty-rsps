@@ -2,10 +2,7 @@ package com.runescape.revised.logic.net.packets;
 
 import org.jboss.netty.channel.Channel;
 
-public class Packet {
-	
-	private short opcode;
-	private VariableType variableType;
+public abstract class Packet {
 	
 	public static final byte PACKET_SIZES[] = {
 		0, 0, 0, 1, -1, 0, 0, 0, 0, 0, //0
@@ -35,11 +32,6 @@ public class Packet {
 		0, 4, 0, 0, 0, 0, -1, 0, -1, 4,//240
 		0, 0, 6, 6, 0, 0, 0            //250
 	};
-	
-	public Packet(short opcode, VariableType variableType) {
-		this.setOpcode(opcode);
-		this.setVariableType(variableType);
-	}
 
 	/**
 	 * Executes the packet.
@@ -47,22 +39,9 @@ public class Packet {
 	 * @param channel
 	 * 			The channel to execute the packet.
 	 */
-	public void executePacket(Channel channel) {}
-
-
-	public void setOpcode(short opcode) {
-		this.opcode = opcode;
-	}
+	public abstract void executePacket(Channel channel);
 	
-	public short getOpcode() {
-		return this.opcode;
-	}
-
-	public void setVariableType(VariableType variableType) {
-		this.variableType = variableType;
-	}
-
-	public VariableType getVariableType() {
-		return this.variableType;
-	}
+	public abstract short getOpcode();
+	public abstract byte getSize();
+	public abstract VariableType getVariableType();
 }

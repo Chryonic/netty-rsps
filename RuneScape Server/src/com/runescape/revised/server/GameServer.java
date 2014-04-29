@@ -5,7 +5,7 @@ import com.runescape.revised.system.System;
 // import com.runescape.revised.thread.IOThread;
 import com.sun.jmx.remote.internal.ArrayQueue;
 
-public abstract class GameServer {
+public class GameServer {
 
 	private ArrayQueue<System> systemQueue;
 	// private Pool<System> systemPool; Two or more systems are allowed at a time - ex:
