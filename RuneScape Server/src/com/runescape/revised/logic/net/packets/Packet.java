@@ -2,9 +2,18 @@ package com.runescape.revised.logic.net.packets;
 
 import org.jboss.netty.channel.Channel;
 
+/**
+ * A class that represents a packet.
+ * 
+ * @author Josh
+ *
+ */
 public abstract class Packet {
 	
-	public static final byte PACKET_SIZES[] = {
+	/**
+	 * The sizes for each packet.
+	 */
+	public static final byte[] PACKET_SIZES = {
 		0, 0, 0, 1, -1, 0, 0, 0, 0, 0, //0
 		0, 0, 0, 0, 8, 0, 6, 2, 2, 0,  //10
 		0, 2, 0, 6, 0, 12, 0, 0, 0, 0, //20
@@ -41,7 +50,28 @@ public abstract class Packet {
 	 */
 	public abstract void executePacket(Channel channel);
 	
+	/**
+	 * Gets the opcode from the packet.
+	 * 
+	 * @return opcode
+	 * 			The opcode for the packet.
+	 */
 	public abstract short getOpcode();
+	
+	/**
+	 * Gets the size from the packet.
+	 * 
+	 * @return size
+	 * 			The size of the packet.
+	 */
 	public abstract byte getSize();
+	
+	/**
+	 * Gets the type of variable used from
+	 * the packet.
+	 * 
+	 * @return variableType
+	 * 			The type of variable.
+	 */
 	public abstract VariableType getVariableType();
 }
