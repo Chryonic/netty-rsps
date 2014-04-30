@@ -11,19 +11,19 @@ public class ClientList {
 		this.setSocketMap(new Hashtable<String, Integer>());
 	}
 
-	public void addClient(String connection) {
+	public void addClient(final String connection) {
 		synchronized(this.getSocketMap()) {
 			// this.getSocketMap().add(connection);			
 		}
 	}
 
-	public void removeClient(String connection) {
+	public void removeClient(final String connection) {
 		synchronized(this.getSocketMap()) {
 			this.getSocketMap().remove(connection);
 		}
 	}
 
-	public void setSocketMap(Map<String, Integer> socketMap) {
+	public void setSocketMap(final Map<String, Integer> socketMap) {
 		this.socketMap = socketMap;
 	}
 

@@ -7,12 +7,12 @@ public class Requirement {
 	private byte level;
 	private SkillType skillType;
 	
-	public Requirement(byte level, SkillType skillType) {
+	public Requirement(final byte level, final SkillType skillType) {
 		this.setLevel(level);
 		this.setSkillType(skillType);
 	}
 	
-	public void setLevel(byte level) {
+	public void setLevel(final byte level) {
 		this.level = level;
 	}
 	
@@ -20,7 +20,7 @@ public class Requirement {
 		return this.level;
 	}
 	
-	public void setSkillType(SkillType skillType) {
+	public void setSkillType(final SkillType skillType) {
 		this.skillType = skillType;
 	}
 	

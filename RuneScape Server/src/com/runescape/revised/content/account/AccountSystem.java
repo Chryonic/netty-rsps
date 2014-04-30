@@ -6,7 +6,7 @@ public class AccountSystem extends System {
 
 	private static AccountSystem accountSystem;
 
-	public static void setAccountSystem(AccountSystem accountSystem) {
+	public static void setAccountSystem(final AccountSystem accountSystem) {
 		AccountSystem.accountSystem = accountSystem;
 	}
 

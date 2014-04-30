@@ -10,11 +10,11 @@ public class PacketSystem extends LogicSystem {
 	
 	public PacketSystem() {}
 	
-	public void throwPacket(Packet packet, Channel channel) {
+	public void throwPacket(final Packet packet, final Channel channel) {
 		packet.executePacket(channel);
 	}
 
-	public static void setPacketSystem(PacketSystem packetSystem) {
+	public static void setPacketSystem(final PacketSystem packetSystem) {
 		PacketSystem.packetSystem = packetSystem;
 	}
 

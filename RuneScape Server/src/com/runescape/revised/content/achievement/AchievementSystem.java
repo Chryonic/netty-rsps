@@ -4,7 +4,7 @@ public class AchievementSystem {
 
 	private Achievement[] achievements;
 
-	public void setAchievements(Achievement... achievements) {
+	public void setAchievements(final Achievement... achievements) {
 		this.achievements = achievements;
 	}
 

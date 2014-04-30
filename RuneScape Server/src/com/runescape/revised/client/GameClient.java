@@ -5,14 +5,14 @@ import org.jboss.netty.channel.Channel;
 public class GameClient {
 
 	private Channel channel;
-	private int id;
+	private short id;
 	
-	public GameClient(Channel channel, int id) {
+	public GameClient(final Channel channel, final short id) {
 		this.setChannel(channel);
 		this.setID(id);
 	}
 
-	public void setChannel(Channel channel) {
+	public void setChannel(final Channel channel) {
 		this.channel = channel;
 	}
 
@@ -20,11 +20,11 @@ public class GameClient {
 		return this.channel;
 	}
 
-	public void setID(int id) {
+	public void setID(final short id) {
 		this.id = id;
 	}
 
-	public int getID() {
+	public short getID() {
 		return this.id;
 	}
 }

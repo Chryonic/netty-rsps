@@ -8,15 +8,15 @@ public class AnnotationException extends Exception {
 		super();
 	}
 	
-	public AnnotationException(String message) {
+	public AnnotationException(final String message) {
 		super(message);
 	}
 	
-	public AnnotationException(String message, Throwable cause) {
+	public AnnotationException(final String message, final Throwable cause) {
 		super(message, cause);
 	}
 	
-	public AnnotationException(Throwable cause) {
+	public AnnotationException(final Throwable cause) {
 		super(cause);
 	}
 }

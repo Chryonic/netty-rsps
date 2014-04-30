@@ -2,9 +2,7 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 
 import org.jboss.netty.channel.Channel;
 
-// import com.runescape.revised.logic.net.packets.PacketBuffer;
 import com.runescape.revised.logic.net.packets.VariableType;
-// import com.runescape.revised.logic.net.packets.codec.login.LoginDecoder;
 import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
 
 /**
@@ -20,7 +18,7 @@ public class Request extends LoginPacket {
 	 * @see com.runescape.revised.logic.net.packets.Packet#executePacket(org.jboss.netty.buffer.ChannelBuffer, org.jboss.netty.channel.Channel)
 	 */
 	@Override
-	public void executePacket(Channel channel) {
+	public void executePacket(final Channel channel) {
 		// for (byte b = 0; b < 9; b++) {
 			// channel.write(new PacketBuffer().writeByte((byte) 0));
 		// }

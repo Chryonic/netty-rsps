@@ -9,11 +9,11 @@ public class Login {
 	private String username;
 	private String password;
 
-	public Login(Channel channel) {
-		new GameClient(channel, -1);
+	public Login(final Channel channel) {
+		new GameClient(channel, (short) -1);
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
 
@@ -21,7 +21,7 @@ public class Login {
 		return this.username;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
 	}
 

@@ -18,7 +18,7 @@ public class Update extends LoginPacket {
 	 * @see com.runescape.revised.logic.net.packets.Packet#executePacket(org.jboss.netty.channel.Channel)
 	 */
 	@Override
-	public void executePacket(Channel channel) {
+	public void executePacket(final Channel channel) {
 		// TODO Auto-generated method stub
 		
 	}

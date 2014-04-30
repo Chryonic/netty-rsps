@@ -38,7 +38,7 @@ public class Main {
 	 * The constructor.
 	 */
 	public Main() {
-		Timer timer = new Timer();
+		final Timer timer = new Timer();
 		this.setGarbageCollector(new GarbageCollector());
 		this.setNetty(new Netty());
 		this.setGameServer(new GameServer());
@@ -51,7 +51,7 @@ public class Main {
 	 * @param args
 	 * 			The method's arguments.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		Main.getMain();
 	}
 
@@ -61,7 +61,7 @@ public class Main {
 	 * @param main
 	 * 			The main instance to set.
 	 */
-	public static void setMain(Main main) {
+	public static void setMain(final Main main) {
 		Main.main = main;
 	}
 
@@ -84,7 +84,7 @@ public class Main {
 	 * @param gameServer
 	 * 			The game server to set.
 	 */
-	public void setGameServer(GameServer gameServer) {
+	public void setGameServer(final GameServer gameServer) {
 		this.gameServer = gameServer;
 	}
 
@@ -104,7 +104,7 @@ public class Main {
 	 * @param garbageCollector
 	 * 			The garbage collector to set.
 	 */
-	public void setGarbageCollector(GarbageCollector garbageCollector) {
+	public void setGarbageCollector(final GarbageCollector garbageCollector) {
 		this.garbageCollector = garbageCollector;
 	}
 
@@ -115,7 +115,7 @@ public class Main {
 	 * 			The garbage collector to get.
 	 */
 	public GarbageCollector getGarbageCollector() {
-		return garbageCollector;
+		return this.garbageCollector;
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class Main {
 	 * @param netty
 	 * 			The networking to set.
 	 */
-	public void setNetty(Netty netty) {
+	public void setNetty(final Netty netty) {
 		this.netty = netty;
 	}
 
@@ -135,6 +135,6 @@ public class Main {
 	 * 			The networking to get.
 	 */
 	public Netty getNetty() {
-		return netty;
+		return this.netty;
 	}
 }
