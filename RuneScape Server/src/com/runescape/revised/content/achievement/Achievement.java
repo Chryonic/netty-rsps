@@ -8,7 +8,7 @@ public class Achievement {
 	private LocationType locationType;
 	private Requirement requirement;
 
-	public void setDifficulty(Difficulty difficulty) {
+	public void setDifficulty(final Difficulty difficulty) {
 		this.difficulty = difficulty;
 	}
 
@@ -16,7 +16,7 @@ public class Achievement {
 		return this.difficulty;
 	}
 
-	public void setLocationType(LocationType locationType) {
+	public void setLocationType(final LocationType locationType) {
 		this.locationType = locationType;
 	}
 
@@ -24,7 +24,7 @@ public class Achievement {
 		return this.locationType;
 	}
 
-	public void setRequirement(Requirement requirement) {
+	public void setRequirement(final Requirement requirement) {
 		this.requirement = requirement;
 	}
 

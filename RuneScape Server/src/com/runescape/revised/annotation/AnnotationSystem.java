@@ -7,19 +7,18 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.runescape.revised.system.System;
-import com.runescape.revised.annotation.AnnotationCodeType;
 import com.runescape.revised.annotation.impl.Finished;
+import com.runescape.revised.system.System;
 
 @Finished(getAnnotationType = AnnotationCodeType.FINISHED_CODE)
 public class AnnotationSystem extends System {
 	
-	public static void main(String[] args) {
-		File directoryFile = new File("../Areto Server/src/com/");
+	public static void main(final String[] args) {
+		final File directoryFile = new File("../Areto Server/src/com/");
 		if (!directoryFile.exists()) {
 			try {
 				throw new FileNotFoundException("Directory does not exist: " + directoryFile);
-			} catch (FileNotFoundException fnfe) {
+			} catch (final FileNotFoundException fnfe) {
 				fnfe.printStackTrace();
 			}
 		}
@@ -29,19 +28,19 @@ public class AnnotationSystem extends System {
 		if (!directoryFile.canRead()) {
 			try {
 				throw new IllegalAccessException("Directory cannot be read: " + directoryFile);
-			} catch (IllegalAccessException iae) {
+			} catch (final IllegalAccessException iae) {
 				iae.printStackTrace();
 			}
 		}
-		List<File> fileList = AnnotationSystem.getFileListing(directoryFile);
+		final List<File> fileList = AnnotationSystem.getFileListing(directoryFile);
 		Collections.sort(fileList);
 		if (fileList == null) {
 			return;
 		}
-		for (File file : fileList) {
+		for (final File file : fileList) {
 			Class<?> classes = file.getClass();
-			Annotation[] annotations = (Annotation[]) classes.getAnnotations();
-			for (Annotation annotation : annotations) {
+			final Annotation[] annotations = (Annotation[]) classes.getAnnotations();
+			for (final Annotation annotation : annotations) {
 				if (((java.lang.annotation.Annotation) annotation).annotationType().equals("Finished")) {
 					classes = null;
 					/**
@@ -53,16 +52,16 @@ public class AnnotationSystem extends System {
 		}
 	}
 	
-	public static List<File> getFileListing(File startingFile) {
-		List<File> resultList = new ArrayList<File>();
-		File[] files = startingFile.listFiles();
-		List<File> fileDirectoryList = Arrays.asList(files);
-		for (File file : fileDirectoryList) {
+	public static List<File> getFileListing(final File startingFile) {
+		final List<File> resultList = new ArrayList<File>();
+		final File[] files = startingFile.listFiles();
+		final List<File> fileDirectoryList = Arrays.asList(files);
+		for (final File file : fileDirectoryList) {
 			if (file.getName().endsWith(".java")) {
 				resultList.add(file);
 			}
 			if (!file.isFile()) {
-				List<File> deeperFileList = AnnotationSystem.getFileListing(file);
+				final List<File> deeperFileList = AnnotationSystem.getFileListing(file);
 				resultList.addAll(deeperFileList);
 			}
 		}

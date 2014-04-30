@@ -12,11 +12,11 @@ public enum AnnotationCodeType {
 
     private Mission mission;
 
-    private AnnotationCodeType(Mission mission) {
+    private AnnotationCodeType(final Mission mission) {
             this.setMission(mission);
     }
 
-    public void setMission(Mission mission) {
+    public void setMission(final Mission mission) {
             this.mission = mission;
     }
 

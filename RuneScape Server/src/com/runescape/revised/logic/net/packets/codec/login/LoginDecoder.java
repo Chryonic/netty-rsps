@@ -20,8 +20,8 @@ public class LoginDecoder extends FrameDecoder {
 	 * @see org.jboss.netty.handler.codec.frame.FrameDecoder#decode(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.Channel, org.jboss.netty.buffer.ChannelBuffer)
 	 */
 	@Override
-	protected Object decode(ChannelHandlerContext chc, Channel channel, ChannelBuffer channelBuffer) throws Exception {
-		byte opcode = (byte) channelBuffer.readUnsignedByte();
+	protected Object decode(final ChannelHandlerContext chc, final Channel channel, final ChannelBuffer channelBuffer) throws Exception {
+		final byte opcode = (byte) channelBuffer.readUnsignedByte();
 		switch (opcode) {
 		case 14:
 			System.out.println("Throwing Request login packet");
@@ -40,7 +40,7 @@ public class LoginDecoder extends FrameDecoder {
 		return null;
 	}
 
-	public void setLoginState(LoginState loginState) {
+	public void setLoginState(final LoginState loginState) {
 		this.loginState = loginState;
 	}
 
@@ -48,7 +48,7 @@ public class LoginDecoder extends FrameDecoder {
 		return this.loginState;
 	}
 
-	public static void setConnectionType(ConnectionType connectionType) {
+	public static void setConnectionType(final ConnectionType connectionType) {
 		LoginDecoder.connectionType = connectionType;
 	}
 
