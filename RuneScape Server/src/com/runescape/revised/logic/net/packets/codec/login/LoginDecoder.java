@@ -8,7 +8,6 @@ import org.jboss.netty.handler.codec.frame.FrameDecoder;
 import com.runescape.revised.logic.net.packets.PacketSystem;
 import com.runescape.revised.logic.net.packets.codec.login.impl.Connect;
 import com.runescape.revised.logic.net.packets.codec.login.impl.Request;
-import com.runescape.revised.logic.net.packets.codec.login.impl.Reconnect;
 import com.runescape.revised.logic.net.packets.codec.login.impl.Update;
 
 public class LoginDecoder extends FrameDecoder {
@@ -33,12 +32,9 @@ public class LoginDecoder extends FrameDecoder {
 			PacketSystem.getPacketSystem().throwPacket(new Update(), channel);
 			break;
 		case 16:
+		case 18:
 			System.out.println("Throwing Connect login packet");
 			PacketSystem.getPacketSystem().throwPacket(new Connect(), channel);
-			break;
-		case 18:
-			System.out.println("Throwing Reconnect login packet");
-			PacketSystem.getPacketSystem().throwPacket(new Reconnect(), channel);
 			break;
 		}
 		return null;
