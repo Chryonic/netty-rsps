@@ -26,6 +26,7 @@ public class LoginDecoder extends FrameDecoder {
 		case 14:
 			System.out.println("Throwing Request login packet");
 			PacketSystem.getPacketSystem().throwPacket(new Request(), channel);
+			// channel.write(new PacketBuffer().writeByte((byte) 0));
 			break;
 		case 15:
 			System.out.println("Throwing Update login packet");
@@ -35,6 +36,7 @@ public class LoginDecoder extends FrameDecoder {
 		case 18:
 			System.out.println("Throwing Connect login packet");
 			PacketSystem.getPacketSystem().throwPacket(new Connect(), channel);
+			// channel.write(new PacketBuffer().writeByte((byte) 2));
 			break;
 		}
 		return null;
