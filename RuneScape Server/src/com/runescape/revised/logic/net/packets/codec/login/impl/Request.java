@@ -2,7 +2,7 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 
 import org.jboss.netty.channel.Channel;
 
-import com.runescape.revised.logic.net.packets.PacketBuffer;
+// import com.runescape.revised.logic.net.packets.PacketBuffer;
 import com.runescape.revised.logic.net.packets.VariableType;
 // import com.runescape.revised.logic.net.packets.codec.login.LoginDecoder;
 import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
@@ -21,9 +21,9 @@ public class Request extends LoginPacket {
 	 */
 	@Override
 	public void executePacket(Channel channel) {
-		for (byte b = 0; b < 9; b++) {
-			channel.write(new PacketBuffer().writeByte((byte) 0));
-		}
+		// for (byte b = 0; b < 9; b++) {
+			// channel.write(new PacketBuffer().writeByte((byte) 0));
+		// }
 		// LoginDecoder.setConnectionType(ConnectionType.NEW_CONNECTION);
 	}
 
@@ -33,7 +33,6 @@ public class Request extends LoginPacket {
 	 */
 	@Override
 	public short getOpcode() {
-		// TODO Auto-generated method stub
 		return 14;
 	}
 
@@ -43,7 +42,6 @@ public class Request extends LoginPacket {
 	 */
 	@Override
 	public byte getSize() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -53,7 +51,6 @@ public class Request extends LoginPacket {
 	 */
 	@Override
 	public VariableType getVariableType() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

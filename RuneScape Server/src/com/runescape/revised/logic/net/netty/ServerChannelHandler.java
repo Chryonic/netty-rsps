@@ -16,17 +16,15 @@ public class ServerChannelHandler extends SimpleChannelHandler {
 	 * @see org.jboss.netty.channel.SimpleChannelHandler#exceptionCaught(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.ExceptionEvent)
 	 */
 	@Override
-	public void exceptionCaught(ChannelHandlerContext chc, ExceptionEvent e) throws Exception {}
+	public void exceptionCaught(ChannelHandlerContext chc, ExceptionEvent ee) throws Exception {}
 	
 	/*
 	 * (non-Javadoc)
 	 * @see org.jboss.netty.channel.SimpleChannelHandler#messageReceived(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.MessageEvent)
 	 */
 	@Override
-	public void messageReceived(ChannelHandlerContext chc, MessageEvent e) throws Exception {
-		if (e.getMessage() instanceof Packet) {
-			PacketSystem.getPacketSystem().throwPacket((Packet) e.getMessage(), chc.getChannel());
-		}
+	public void messageReceived(ChannelHandlerContext chc, MessageEvent me) throws Exception {
+		PacketSystem.getPacketSystem().throwPacket((Packet) me.getMessage(), chc.getChannel());
 	}
 	
 	/*
@@ -34,12 +32,12 @@ public class ServerChannelHandler extends SimpleChannelHandler {
 	 * @see org.jboss.netty.channel.SimpleChannelHandler#channelConnected(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.ChannelStateEvent)
 	 */
 	@Override
-	public void channelConnected(ChannelHandlerContext chc, ChannelStateEvent e) {}
+	public void channelConnected(ChannelHandlerContext chc, ChannelStateEvent cse) {}
 	
 	/*
 	 * (non-Javadoc)
 	 * @see org.jboss.netty.channel.SimpleChannelHandler#channelClosed(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.ChannelStateEvent)
 	 */
 	@Override
-	public void channelClosed(ChannelHandlerContext chc, ChannelStateEvent e) throws Exception {}
+	public void channelClosed(ChannelHandlerContext chc, ChannelStateEvent cse) throws Exception {}
 }
