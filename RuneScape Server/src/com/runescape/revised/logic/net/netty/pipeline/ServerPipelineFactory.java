@@ -22,7 +22,7 @@ public class ServerPipelineFactory implements ChannelPipelineFactory {
 	 */
 	@Override
 	public ChannelPipeline getPipeline() throws Exception {
-		ChannelPipeline channelPipeline = Channels.pipeline();
+		final ChannelPipeline channelPipeline = Channels.pipeline();
 		channelPipeline.addLast("encoder", new GameEncoder());
 		channelPipeline.addLast("decoder", new LoginDecoder());
 		channelPipeline.addLast("handler", new ServerChannelHandler());
