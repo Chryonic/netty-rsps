@@ -3,7 +3,7 @@ package com.runescape.revised.logic.net.packets;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
 
-public class PacketBuffer {
+public class NettyPacketBuffer {
 	
 	private ChannelBuffer channelBuffer = ChannelBuffers.dynamicBuffer();
 	private static final int[] BIT_MASK_OUT = new int[32];
@@ -16,44 +16,44 @@ public class PacketBuffer {
 		}
 	}
 	
-	public PacketBuffer writeByte(byte b) {
+	public NettyPacketBuffer writeByte(byte b) {
 		this.getChannelBuffer().writeByte(b);
 		return this;
 	}
 	
-	public PacketBuffer writeBytes(byte[] b) {
+	public NettyPacketBuffer writeBytes(byte[] b) {
 		this.getChannelBuffer().writeBytes(b);
 		return this;
 	}
 	
-	public PacketBuffer writeShort(short s) {
+	public NettyPacketBuffer writeShort(short s) {
 		this.getChannelBuffer().writeShort(s);
 		return this;
 	}
 	
-	public PacketBuffer writeInt(int i) {
+	public NettyPacketBuffer writeInt(int i) {
 		this.getChannelBuffer().writeInt(i);
 		return this;
 	}
 	
-	public PacketBuffer writeLong(long l) {
+	public NettyPacketBuffer writeLong(long l) {
 		this.getChannelBuffer().writeLong(l);
 		return this;
 	}
 	
-	public PacketBuffer writeString(String string) {
+	public NettyPacketBuffer writeString(String string) {
 		return this.writeBytes(string.getBytes()).writeByte((byte) 10);
 	}
 
-	public PacketBuffer putShortA(int val) {
+	public NettyPacketBuffer putShortA(int val) {
 		return this.writeByte((byte) (val >> 8)).writeByte((byte) (val + 128));
 	}
 
-	public PacketBuffer writeByteA(int val) {
+	public NettyPacketBuffer writeByteA(int val) {
 		return this.writeByte((byte) (val + 128));
 	}
 
-	public PacketBuffer writeLEShortA(int val) {
+	public NettyPacketBuffer writeLEShortA(int val) {
 		return this.writeByte((byte) (val + 128)).writeByte((byte) (val >> 8));
 	}
 
@@ -105,23 +105,23 @@ public class PacketBuffer {
 		return this;
 	} */
 
-	public PacketBuffer writeByteC(int val) {
+	public NettyPacketBuffer writeByteC(int val) {
 		return this.writeByte((byte) (-val));
 	}
 
-	public PacketBuffer writeLEShort(int val) {
+	public NettyPacketBuffer writeLEShort(int val) {
 		return this.writeByte((byte) val).writeByte((byte) (val >> 8));
 	}
 
-	public PacketBuffer writeInt1(int val) {
+	public NettyPacketBuffer writeInt1(int val) {
 		return this.writeByte((byte) (val >> 8)).writeByte((byte) val).writeByte((byte) (val >> 24)).writeByte((byte) (val >> 16));
 	}
 	
-	public PacketBuffer writeInt2(int val) {
+	public NettyPacketBuffer writeInt2(int val) {
 		return this.writeByte((byte) (val >> 16)).writeByte((byte) (val >> 24)).writeByte((byte) val).writeByte((byte) (val >> 8));
 	}
 	
-	public PacketBuffer writeLEInt(int val) {
+	public NettyPacketBuffer writeLEInt(int val) {
 		return this.writeByte((byte) (val)).writeByte((byte) (val >> 8)).writeByte((byte) (val >> 16)).writeByte((byte) (val >> 24));
 	}
 
@@ -130,37 +130,37 @@ public class PacketBuffer {
 		return this;
 	} */
 	
-	public PacketBuffer writeByteA(byte val) {
+	public NettyPacketBuffer writeByteA(byte val) {
 		return this.writeByte((byte) (val + 128));
 	}
 	
-	public PacketBuffer writeByteC(byte val) {
+	public NettyPacketBuffer writeByteC(byte val) {
 		return this.writeByte((byte) (-val));
 	}
 	
-	public PacketBuffer writeByteS(byte val) {
+	public NettyPacketBuffer writeByteS(byte val) {
 		return this.writeByte((byte) (128 - val));
 	}
 	
-	public PacketBuffer writeReverse(byte[] is, int offset, int length) {
+	public NettyPacketBuffer writeReverse(byte[] is, int offset, int length) {
 		for(int i = (offset + length - 1); i >= offset; i--) {
 			this.writeByte(is[i]);
 		}
 		return this;
 	}
 	
-	public PacketBuffer writeReverseA(byte[] is, int offset, int length) {
+	public NettyPacketBuffer writeReverseA(byte[] is, int offset, int length) {
 		for(int i = (offset + length - 1); i >= offset; i--) {
 			this.writeByteA(is[i]);
 		}
 		return this;
 	}
 	
-	public PacketBuffer writeTriByte(int val) {
+	public NettyPacketBuffer writeTriByte(int val) {
 		return this.writeByte((byte) (val >> 16)).writeByte((byte) (val >> 8)).writeByte((byte) val);
 	}
 
-	public PacketBuffer writeSmart(int val) {
+	public NettyPacketBuffer writeSmart(int val) {
 		if(val >= 128) {
 			this.writeShort((short) (val + 32768));
 		} else {
@@ -169,7 +169,7 @@ public class PacketBuffer {
 		return this;
 	}
 	
-	public PacketBuffer putSignedSmart(int val) {
+	public NettyPacketBuffer putSignedSmart(int val) {
 		if(val >= 128) {
 			this.writeShort((short) (val + 49152));
 		} else {
