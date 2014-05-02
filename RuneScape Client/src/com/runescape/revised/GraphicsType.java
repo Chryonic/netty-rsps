@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The type of graphics.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum GraphicsType {

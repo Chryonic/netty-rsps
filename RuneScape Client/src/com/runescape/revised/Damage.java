@@ -4,7 +4,7 @@ package com.runescape.revised;
  * The Damage class used to calculate
  * the damage dealt to an Entity.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public class Damage {

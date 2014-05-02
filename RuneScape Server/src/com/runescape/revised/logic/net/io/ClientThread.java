@@ -124,10 +124,18 @@ public class ClientThread implements Runnable {
 			this.getOutputStream().write(2);
 			this.getOutputStream().write(0);
 			this.getOutputStream().write(0);
+			// this.getOutStream().createFrame(249);
+			// this.getOutStream().writeByteA(1);
+			// this.getOutStream().writeWordA(1);
+			// this.getOutStream().createFrame(107);
 		} catch (final Exception e) {
 			e.printStackTrace();
 			return;
 		}
+		final int mapRegionX = 0x182, mapRegionY = 0x195;
+		this.getOutStream().createFrame(73);
+		this.getOutStream().writeWordA(mapRegionX);
+		this.getOutStream().writeWord(mapRegionY);
 	}
 
 	public void flushOutStream() throws IOException {

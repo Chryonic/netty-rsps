@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * A pool of Objects.
  * 
- * @author josh
+ * @author Josh
  * @param <E>
  * 			The value of type Pool.
  */

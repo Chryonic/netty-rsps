@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The state the game is in.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum GameState {

@@ -2,6 +2,8 @@ package com.runescape.revised.logic.net.packets;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
+
 /**
  * A class that represents a packet.
  * 
@@ -9,7 +11,7 @@ import org.jboss.netty.channel.Channel;
  *
  */
 public abstract class Packet {
-	
+
 	/**
 	 * The sizes for each packet.
 	 */
@@ -49,7 +51,7 @@ public abstract class Packet {
 	 * 			The channel to execute the packet.
 	 */
 	public abstract void executePacket(Channel channel);
-	
+
 	/**
 	 * Gets the opcode from the packet.
 	 * 
@@ -57,7 +59,7 @@ public abstract class Packet {
 	 * 			The opcode for the packet.
 	 */
 	public abstract short getOpcode();
-	
+
 	/**
 	 * Gets the size from the packet.
 	 * 
@@ -65,7 +67,7 @@ public abstract class Packet {
 	 * 			The size of the packet.
 	 */
 	public abstract byte getSize();
-	
+
 	/**
 	 * Gets the type of variable used from
 	 * the packet.
@@ -74,4 +76,12 @@ public abstract class Packet {
 	 * 			The type of variable.
 	 */
 	public abstract VariableType getVariableType();
+
+	/**
+	 * Gets the priority of the packet.
+	 * 
+	 * @return priority
+	 * 			The priority of the packet.
+	 */
+	public abstract Priority getPriority();
 }

@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The type of screen size.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum ScreenSize {

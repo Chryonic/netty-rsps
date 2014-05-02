@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The type of language people speak.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum LanguageType {

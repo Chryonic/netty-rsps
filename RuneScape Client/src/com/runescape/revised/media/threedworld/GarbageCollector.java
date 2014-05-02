@@ -1,12 +1,12 @@
 package com.runescape.revised.media.threedworld;
 
-import com.runescape.revised.util.Benchmarker;
+import com.runescape.revised.util.Timer;
 
 public class GarbageCollector implements Runnable {
 
     @Override
 	public void run() {
-    	Benchmarker time = new Benchmarker();
+    	Timer time = new Timer();
     	long beforeCollector = Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory();
     	System.gc();
     	System.runFinalization();
