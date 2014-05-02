@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The direction of where you are going.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum Direction {

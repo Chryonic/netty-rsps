@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The location for a group of interfaces.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum InterfaceLocation {

@@ -1,9 +1,12 @@
 package com.runescape;
 
+import java.io.IOException;
+
 import com.runescape.revised.garbagecollector.GarbageCollector;
-import com.runescape.revised.logic.net.netty.Netty;
+import com.runescape.revised.logic.cycle.CycleSystem;
+import com.runescape.revised.logic.cycle.impl.ServerCycle;
+import com.runescape.revised.logic.net.io.Io;
 import com.runescape.revised.server.GameServer;
-import com.runescape.util.Timer;
 
 /**
  * The main class that starts everything
@@ -13,45 +16,63 @@ import com.runescape.util.Timer;
  *
  */
 public class Main {
-	
+
 	/**
 	 * The main instance.
 	 */
 	private static Main main;
-	
+
 	/**
 	 * The game server instance.
 	 */
 	private GameServer gameServer;
-	
+
 	/**
 	 * The garbage collector instance.
 	 */
 	private GarbageCollector garbageCollector;
-	
+
 	/**
 	 * The netty instance.
 	 */
-	private Netty netty;
-	
+	// private Netty netty;
+
+	/**
+	 * The io instance.
+	 */
+	private Io io;
+
 	/**
 	 * The constructor.
+	 * 
+	 * @throws IOException
 	 */
-	public Main() {
-		final Timer timer = new Timer();
+	public Main() throws IOException {
+
+		/* Create a new Garbage Collector. */
 		this.setGarbageCollector(new GarbageCollector());
-		this.setNetty(new Netty());
+
+		/* Remove the Netty networking due to a few problems. */
+		// this.setNetty(new Netty());
+
+		/* Setup the Cycle based system for processes. */
+		CycleSystem.getCycleSystem().addCycle(new ServerCycle());
+
+		/* Setup the Io networking. */
+		this.setIo(new Io());
+
+		/* Setup the GameServer. */
 		this.setGameServer(new GameServer());
-		System.out.println("RuneScape Server started in " + timer.toString());
 	}
-	
+
 	/**
 	 * The main method.
 	 * 
 	 * @param args
 	 * 			The method's arguments.
+	 * @throws IOException
 	 */
-	public static void main(final String[] args) {
+	public static void main(final String[] args) throws IOException {
 		Main.getMain();
 	}
 
@@ -70,8 +91,9 @@ public class Main {
 	 * 
 	 * @return main
 	 * 			The main instance to get.
+	 * @throws IOException
 	 */
-	public static Main getMain() {
+	public static Main getMain() throws IOException {
 		if (Main.main == null) {
 			Main.setMain(new Main());
 		}
@@ -124,9 +146,9 @@ public class Main {
 	 * @param netty
 	 * 			The networking to set.
 	 */
-	public void setNetty(final Netty netty) {
+	/** public void setNetty(final Netty netty) {
 		this.netty = netty;
-	}
+	} */
 
 	/**
 	 * Gets the Netty networking.
@@ -134,7 +156,27 @@ public class Main {
 	 * @return netty
 	 * 			The networking to get.
 	 */
-	public Netty getNetty() {
+	/** public Netty getNetty() {
 		return this.netty;
+	} */
+
+	/**
+	 * Sets the Io networking.
+	 * 
+	 * @param io
+	 * 			The Io networking to get.
+	 */
+	public void setIo(final Io io) {
+		this.io = io;
+	}
+
+	/**
+	 * Gets the Io networking.
+	 * 
+	 * @return io
+	 * 			The Io networking to get.
+	 */
+	public Io getIo() {
+		return this.io;
 	}
 }

@@ -5,25 +5,22 @@ public class Timer {
 	private long time;
 
 	public Timer() {
-		this.start();
-	}
-
-	public void start() {
 		this.setTime(System.currentTimeMillis());
 	}
-	
-	public void setTime(long time) {
+
+	public void setTime(final long time) {
 		this.time = time;
 	}
-	
+
 	public long getTime() {
 		return this.time;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() {
 		return (System.currentTimeMillis() - this.getTime()) + "ms.";
 	}

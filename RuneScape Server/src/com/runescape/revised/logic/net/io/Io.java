@@ -52,7 +52,7 @@ public class Io {
 				this.setClientThread(new ClientThread(this.getSocket()));
 				try {
 					Thread.sleep(1000);
-					this.setRunning(false);
+					// this.setRunning(false);
 				} catch (final InterruptedException ie) {
 					ie.printStackTrace();
 				}

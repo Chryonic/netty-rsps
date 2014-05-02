@@ -10,7 +10,7 @@ import com.runescape.revised.media.tabarea.Tab;
  * The GameClient class used to represent
  * a Client in RuneScape.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public class GameClient {

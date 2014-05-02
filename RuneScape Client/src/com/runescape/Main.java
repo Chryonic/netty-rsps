@@ -3,13 +3,13 @@ package com.runescape;
 import com.runescape.revised.GameClient;
 import com.runescape.revised.GarbageCollector;
 import com.runescape.revised.client.newclient.login.LoginFrame;
-import com.runescape.revised.net.netty.Netty;
+import com.runescape.revised.util.Timer;
 
 /**
  * The Main class for the Client to
  * startup.
  * 
- * @author josh
+ * @author Josh
  * 
  */
 public class Main {
@@ -18,31 +18,55 @@ public class Main {
 	 * The Main instance.
 	 */
 	private static Main main;
-	
+
 	/**
 	 * The GameClient instance.
 	 */
 	private GameClient gameClient;
-	
+
+	/**
+	 * The GarbageCollector instance.
+	 */
+	private GarbageCollector garbageCollector;
+
+	/**
+	 * The LoginFrame instance.
+	 */
+	private LoginFrame loginFrame;
+
 	/**
 	 * The Main constructor.
 	 */
 	public Main() {
-		long start = java.lang.System.currentTimeMillis();
+
+		/* The timer to time how long the server takes. */
+		final Timer timer = new Timer();
+
+		/* The GameClient. */
 		this.setGameClient(new GameClient());
+
+		/* The garbage collector for cleaning up. */
 		new GarbageCollector();
-		new Netty();
+
+		/* The Netty networking API. */
+		// new Netty();
+
+		/* The LoginFrame so we can log into the game. */
 		new LoginFrame();
-		System.out.println("Client VM - " + (System.currentTimeMillis() - start) + "ms");
+
+		/* Print out how long it took to start everything up. */
+		System.out.println("RuneScape Client started in " + timer.toString());
 	}
-	
+
 	/**
 	 * The main method.
 	 * 
 	 * @param args
 	 * 			The arguments for the client.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
+
+		/* Get the Main instance. */
 		Main.getMain();
 	}
 
@@ -50,9 +74,11 @@ public class Main {
 	 * The setter for the Main instance.
 	 * 
 	 * @param main
-	 * 			The Main parameter.
+	 * 			The Main to set.
 	 */
-	public static void setMain(Main main) {
+	public static void setMain(final Main main) {
+
+		/* Set the old Main instance to the new one. */
 		Main.main = main;
 	}
 
@@ -63,9 +89,15 @@ public class Main {
 	 * 			The Main instance.
 	 */
 	public static Main getMain() {
+
+		/* If the Main instance is null. */
 		if (Main.main == null) {
+
+			/* Create a new Main object. */
 			Main.setMain(new Main());
 		}
+
+		/* Return the Main instance. */
 		return Main.main;
 	}
 
@@ -75,7 +107,9 @@ public class Main {
 	 * @param gameClient
 	 * 			The gameClient parameter.
 	 */
-	public void setGameClient(GameClient gameClient) {
+	public void setGameClient(final GameClient gameClient) {
+
+		/* Set the old game client to the new one. */
 		this.gameClient = gameClient;
 	}
 
@@ -86,6 +120,60 @@ public class Main {
 	 * 			The gameClient instance.
 	 */
 	public GameClient getGameClient() {
+
+		/* Return the game client. */
 		return this.gameClient;
+	}
+
+	/**
+	 * The setter for the GarbageCollector
+	 * instance.
+	 * 
+	 * @param garbageCollector
+	 * 			The garbage collector.
+	 */
+	public void setGarbageCollector(final GarbageCollector garbageCollector) {
+
+		/* Set the old garbage collector to the new one. */
+		this.garbageCollector = garbageCollector;
+	}
+
+	/**
+	 * The getter for the GarbageCollector
+	 * instance.
+	 * 
+	 * @return garbageCollector
+	 * 			The garbage collector.
+	 */
+	public GarbageCollector getGarbageCollector() {
+
+		/* Return the garbage collector. */
+		return this.garbageCollector;
+	}
+
+	/**
+	 * The setter for the LoginFrame
+	 * instance.
+	 * 
+	 * @param loginFrame
+	 * 			The login frame.
+	 */
+	public void setLoginFrame(final LoginFrame loginFrame) {
+
+		/* Set the old login frame to the new one. */
+		this.loginFrame = loginFrame;
+	}
+
+	/**
+	 * The getter for the LoginFrame
+	 * instance.
+	 * 
+	 * @return loginFrame
+	 * 			The login frame.
+	 */
+	public LoginFrame getLoginFrame() {
+
+		/* Return the login frame. */
+		return this.loginFrame;
 	}
 }

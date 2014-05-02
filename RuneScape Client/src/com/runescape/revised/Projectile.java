@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * 
  * 
- * @author josh
+ * @author Josh
  *
  */
 public class Projectile {

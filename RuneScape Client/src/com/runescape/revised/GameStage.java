@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * The stage for the GameClient.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public enum GameStage {

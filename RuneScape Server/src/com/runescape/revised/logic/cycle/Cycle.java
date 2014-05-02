@@ -8,22 +8,22 @@ public abstract class Cycle extends Logic {
 	private short cycleTime;
 	private System system;
 	private Mission mission;
-	
-	public Cycle(short cycleTime) {
+
+	public Cycle(final short cycleTime) {
 		this.setCycleTime(cycleTime);
 	}
-	
+
 	public abstract void startCycle();
-	
-	public void setCycleTime(short cycleTime) {
+
+	public void setCycleTime(final short cycleTime) {
 		this.cycleTime = cycleTime;
 	}
-	
+
 	public short getCycleTime() {
 		return this.cycleTime;
 	}
 
-	public void setSystem(System system) {
+	public void setSystem(final System system) {
 		this.system = system;
 	}
 
@@ -31,7 +31,7 @@ public abstract class Cycle extends Logic {
 		return this.system;
 	}
 
-	public void setMission(Mission mission) {
+	public void setMission(final Mission mission) {
 		this.mission = mission;
 	}
 

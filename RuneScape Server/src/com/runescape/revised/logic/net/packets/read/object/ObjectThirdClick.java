@@ -7,23 +7,39 @@ import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
 public class ObjectThirdClick extends GamePacket {
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#executePacket(org.jboss.netty.channel.Channel)
+	 */
 	@Override
-	public void executePacket(Channel channel) {
+	public void executePacket(final Channel channel) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getOpcode()
+	 */
 	@Override
 	public short getOpcode() {
 		// TODO Auto-generated method stub
 		return 70;
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getSize()
+	 */
 	@Override
 	public byte getSize() {
 		return 6;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getVariableType()
+	 */
 	@Override
 	public VariableType getVariableType() {
 		// TODO Auto-generated method stub

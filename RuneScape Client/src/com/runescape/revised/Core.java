@@ -3,7 +3,7 @@ package com.runescape.revised;
 /**
  * Consists of core parts for a server.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public class Core {

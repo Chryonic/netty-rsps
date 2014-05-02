@@ -1,5 +1,12 @@
 package com.runescape.revised;
 
+/**
+ * The type of programming language
+ * used.
+ * 
+ * @author Josh
+ *
+ */
 public enum ProgrammingLanguageType {
 
 	/**

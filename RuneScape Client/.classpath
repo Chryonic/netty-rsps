@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="lib/jogl.jar"/>
+	<classpathentry kind="lib" path="lib/jython.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/AppleJavaExtensions.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/asm-debug-all.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/jinput.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lwjgl_test.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lwjgl_util_applet.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lwjgl-debug.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lwjgl.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl-2.9.1/jar/lzma.jar"/>
+	<classpathentry kind="lib" path="lib/lwjgl.jar"/>
+	<classpathentry kind="lib" path="lib/mysql.jar"/>
+	<classpathentry kind="lib" path="lib/netty-3.9.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/netty.jar"/>
+	<classpathentry kind="lib" path="lib/opengl_engine.jar"/>
+	<classpathentry kind="lib" path="lib/Theme.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

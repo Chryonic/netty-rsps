@@ -6,7 +6,7 @@ import java.lang.System;
  * The GarbageCollector that collects any
  * garbage (nulls) in the program.
  * 
- * @author josh
+ * @author Josh
  *
  */
 public class GarbageCollector {
