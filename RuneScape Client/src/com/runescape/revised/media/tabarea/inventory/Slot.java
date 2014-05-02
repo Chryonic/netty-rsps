@@ -4,17 +4,17 @@ import com.runescape.revised.model.item.Item;
 
 public class Slot {
 
-	private Item item;
-	
-	public Slot(Item item) {
-		this.setItem(item);
+	private Item inventoryItem;
+
+	public Slot(final Item inventoryItem) {
+		this.setItem(inventoryItem);
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItem(final Item inventoryItem) {
+		this.inventoryItem = inventoryItem;
 	}
 
 	public Item getItem() {
-		return this.item;
+		return this.inventoryItem;
 	}
 }
