@@ -1,5 +1,5 @@
 package com.runescape.revised.model.entity;
 
-public class EntityList {
+public class EntityList<E> {
 
 }
