@@ -2,6 +2,6 @@ package com.runescape.revised.chain;
 
 public interface Chainable {
 
-	public void add(Object object);
-	public void remove(Object object);
+	public Chainable add(Object object);
+	public Chainable remove(Object object);
 }

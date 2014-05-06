@@ -1,5 +1,11 @@
 package com.runescape.revised.content.grandexchange;
 
-public class GrandExchangeSystem {
+import com.runescape.revised.system.System;
 
+public class GrandExchangeSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

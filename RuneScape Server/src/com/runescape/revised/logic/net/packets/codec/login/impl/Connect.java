@@ -2,6 +2,7 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
 import com.runescape.revised.RevisionType;
 import com.runescape.revised.logic.net.packets.NettyPacketBuffer;
 import com.runescape.revised.logic.net.packets.VariableType;
@@ -16,7 +17,7 @@ import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
  *
  */
 public class Connect extends LoginPacket {
-	
+
 	/**
 	 * The revision for the client and server
 	 * to connect to.
@@ -41,7 +42,7 @@ public class Connect extends LoginPacket {
 		} */
 		channel.write(new NettyPacketBuffer().writeByte((byte) 2).writeByte((byte) 0).writeByte((byte) 0));
 		new Login(channel/*, (short) version, name, pass*/);
-		channel.getPipeline().replace("decoder", "decoder", new GameDecoder(null));
+		channel.getPipeline().replace("decoder", "decoder", new GameDecoder());
 		// player.write(new PacketBuilder(249).putByteA(1).putLEShortA(player.getIndex()).toPacket());
 		// player.write(new PacketBuilder(107).toPacket());
 	}
@@ -72,6 +73,16 @@ public class Connect extends LoginPacket {
 	 */
 	@Override
 	public VariableType getVariableType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getPriority()
+	 */
+	@Override
+	public Priority getPriority() {
 		// TODO Auto-generated method stub
 		return null;
 	}

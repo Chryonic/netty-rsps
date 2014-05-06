@@ -1,5 +1,11 @@
 package com.runescape.revised.content.prestige;
 
-public class PrestigeSystem {
+import com.runescape.revised.system.System;
 
+public class PrestigeSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

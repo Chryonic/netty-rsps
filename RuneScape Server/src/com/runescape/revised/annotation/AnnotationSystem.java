@@ -12,9 +12,11 @@ import com.runescape.revised.system.System;
 
 @Finished(getAnnotationType = AnnotationCodeType.FINISHED_CODE)
 public class AnnotationSystem extends System {
-	
+
+	private static AnnotationSystem annotationSystem;
+
 	public static void main(final String[] args) {
-		final File directoryFile = new File("../Areto Server/src/com/");
+		final File directoryFile = new File("../RuneScape Server/src/com/");
 		if (!directoryFile.exists()) {
 			try {
 				throw new FileNotFoundException("Directory does not exist: " + directoryFile);
@@ -51,7 +53,10 @@ public class AnnotationSystem extends System {
 			}
 		}
 	}
-	
+
+	@Override
+	public void executeSystem() {}
+
 	public static List<File> getFileListing(final File startingFile) {
 		final List<File> resultList = new ArrayList<File>();
 		final File[] files = startingFile.listFiles();
@@ -65,6 +70,14 @@ public class AnnotationSystem extends System {
 				resultList.addAll(deeperFileList);
 			}
 		}
-	 	return resultList;
+		return resultList;
+	}
+
+	public static void setAnnotationSystem(final AnnotationSystem annotationSystem) {
+		AnnotationSystem.annotationSystem = annotationSystem;
+	}
+
+	public static AnnotationSystem getAnnotationSystem() {
+		return AnnotationSystem.annotationSystem;
 	}
 }

@@ -4,4 +4,8 @@ import com.runescape.revised.system.System;
 
 public class CutSceneSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }

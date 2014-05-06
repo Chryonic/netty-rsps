@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-import com.runescape.util.ISAACRandomGen;
+import com.runescape.revised.logic.encryption.ISAACRandomGen;
 
 /**
  * Represents a Thread for the Client
@@ -18,6 +18,7 @@ public class ClientThread implements Runnable {
 
 	private Socket socket;
 	private Thread clientThread;
+	// private LWThread<Client> clientThreadList = new LWThread<Client>(2000);
 	private InputStream inputStream;
 	private OutputStream outputStream;
 	private IoPacketBuffer inStream;
@@ -81,8 +82,20 @@ public class ClientThread implements Runnable {
 				return;
 			}
 			this.fillInStream(loginPacketSize);
-			if ((this.getInStream().readUnsignedByte() != 255) || (this.getInStream().readUnsignedWord() != 317)) {
+			if (this.getInStream().readUnsignedByte() != 255) {
 				return;
+			}
+			final short revision = (short) this.getInStream().readUnsignedWord();
+			switch (revision) {
+			case 317:
+				System.out.println("Revision #317 supported!");
+				break;
+			case 562:
+				System.out.println("Revision #562 supported!");
+				break;
+			default:
+				System.out.println("No revision supported!");
+				break;
 			}
 			this.getInStream().readUnsignedByte(); // memory.
 			for (int i = 0; i < 9; i++) {

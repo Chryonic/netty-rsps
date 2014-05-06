@@ -1,5 +1,11 @@
 package com.runescape.revised.content;
 
-public class ContentSystem {
+import com.runescape.revised.system.System;
 
+public class ContentSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

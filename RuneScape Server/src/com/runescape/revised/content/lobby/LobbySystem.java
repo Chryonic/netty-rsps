@@ -1,5 +1,11 @@
 package com.runescape.revised.content.lobby;
 
-public class LobbySystem {
+import com.runescape.revised.system.System;
 
+public class LobbySystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

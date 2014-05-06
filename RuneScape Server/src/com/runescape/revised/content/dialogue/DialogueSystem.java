@@ -8,28 +8,33 @@ import com.runescape.revised.system.System;
 public class DialogueSystem extends System {
 
 	private Queue<Dialogue> dialogueList;
-	
+
 	public DialogueSystem() {
 		this.setDialogueList(new LinkedList<Dialogue>());
 	}
-	
-	public void addDialogue(Dialogue dialogue) {
+
+	public void addDialogue(final Dialogue dialogue) {
 		this.getDialogueList().add(dialogue);
 		dialogue.executeDialogue();
 	}
-	
-	public void removeDialogue(Dialogue dialogue) {
+
+	public void removeDialogue(final Dialogue dialogue) {
 		this.getDialogueList().remove(dialogue);
 	}
-	
-	public void removeAllDialogues(Dialogue... dialogue) {
+
+	public void removeAllDialogues(final Dialogue... dialogue) {
 		this.getDialogueList().removeAll(this.getDialogueList());
 	}
-	
-	public void setDialogueList(Queue<Dialogue> dialogueList) {
+
+	@Override
+	public void executeSystem() {
+
+	}
+
+	public void setDialogueList(final Queue<Dialogue> dialogueList) {
 		this.dialogueList = dialogueList;
 	}
-	
+
 	public Queue<Dialogue> getDialogueList() {
 		return this.dialogueList;
 	}

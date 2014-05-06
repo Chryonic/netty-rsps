@@ -1,5 +1,11 @@
 package com.runescape.revised.content.bank;
 
-public class BankSystem {
+import com.runescape.revised.system.System;
 
+public class BankSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

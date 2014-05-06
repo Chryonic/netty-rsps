@@ -1,5 +1,11 @@
 package com.runescape.revised.content.distractionsdiversions;
 
-public class DistractionsDiversionsSystem {
+import com.runescape.revised.system.System;
 
+public class DistractionsDiversionsSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

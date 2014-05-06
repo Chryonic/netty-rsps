@@ -19,9 +19,15 @@ public class CycleSystem extends System {
 		this.setNewCycleList(new LinkedList<Cycle>());
 	}
 
-	public void addCycle(final Cycle cycle) {
+	public void addCycle(final Cycle cycle, final int delay) {
+		// TODO add in delay
 		this.getCurrentCycleList().add(cycle);
 		// this.getNewCycleList().
+	}
+
+	@Override
+	public void executeSystem() {
+
 	}
 
 	public static void setCycleSystem(final CycleSystem cycleSystem) {

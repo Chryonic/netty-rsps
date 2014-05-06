@@ -2,6 +2,7 @@ package com.runescape.revised.logic.net.packets.codec.login.impl;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
 import com.runescape.revised.logic.net.packets.VariableType;
 import com.runescape.revised.logic.net.packets.codec.login.LoginPacket;
 
@@ -20,7 +21,7 @@ public class Update extends LoginPacket {
 	@Override
 	public void executePacket(final Channel channel) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/*
@@ -49,6 +50,16 @@ public class Update extends LoginPacket {
 	 */
 	@Override
 	public VariableType getVariableType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getPriority()
+	 */
+	@Override
+	public Priority getPriority() {
 		// TODO Auto-generated method stub
 		return null;
 	}

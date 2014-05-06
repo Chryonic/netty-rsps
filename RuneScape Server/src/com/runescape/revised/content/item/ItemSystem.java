@@ -4,4 +4,8 @@ import com.runescape.revised.system.System;
 
 public class ItemSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }

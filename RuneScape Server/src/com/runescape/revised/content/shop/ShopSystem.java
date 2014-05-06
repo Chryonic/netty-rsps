@@ -1,10 +1,17 @@
 package com.runescape.revised.content.shop;
 
-public class ShopSystem {
+import com.runescape.revised.system.System;
+
+public class ShopSystem extends System {
 
 	private static ShopSystem shopSystem;
 
-	public static void setShopSystem(ShopSystem shopSystem) {
+	@Override
+	public void executeSystem() {
+
+	}
+
+	public static void setShopSystem(final ShopSystem shopSystem) {
 		ShopSystem.shopSystem = shopSystem;
 	}
 

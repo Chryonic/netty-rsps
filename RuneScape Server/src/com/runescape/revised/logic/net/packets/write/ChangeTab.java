@@ -2,15 +2,16 @@ package com.runescape.revised.logic.net.packets.write;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
 import com.runescape.revised.logic.net.packets.Packet;
 import com.runescape.revised.logic.net.packets.VariableType;
 
 public class ChangeTab extends Packet {
 
 	@Override
-	public void executePacket(Channel channel) {
+	public void executePacket(final Channel channel) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -18,7 +19,7 @@ public class ChangeTab extends Packet {
 		// TODO Auto-generated method stub
 		return 106;
 	}
-	
+
 	@Override
 	public byte getSize() {
 		return 0;
@@ -26,6 +27,12 @@ public class ChangeTab extends Packet {
 
 	@Override
 	public VariableType getVariableType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Priority getPriority() {
 		// TODO Auto-generated method stub
 		return null;
 	}

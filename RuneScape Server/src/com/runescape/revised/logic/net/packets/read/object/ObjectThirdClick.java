@@ -2,6 +2,7 @@ package com.runescape.revised.logic.net.packets.read.object;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
 import com.runescape.revised.logic.net.packets.VariableType;
 import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
@@ -44,5 +45,15 @@ public class ObjectThirdClick extends GamePacket {
 	public VariableType getVariableType() {
 		// TODO Auto-generated method stub
 		return VariableType.FIXED;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getPriority()
+	 */
+	@Override
+	public Priority getPriority() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

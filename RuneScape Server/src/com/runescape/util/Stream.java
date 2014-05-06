@@ -1,389 +1,404 @@
 package com.runescape.util;
 
+import com.runescape.revised.logic.encryption.ISAACRandomGen;
+
 public class Stream {
+
+	public byte[] buffer = null;
+	public int currentOffset = 0;
+	public int bitPosition = 0;
+	public static int[] bitMaskOut = new int[32];
+	public ISAACRandomGen packetEncryption = null;
 
 	public Stream() {}
 
-	public Stream(byte abyte0[]) {
-		buffer = abyte0;
-		currentOffset = 0;
+	public Stream(final byte abyte0[]) {
+		this.buffer = abyte0;
+		this.currentOffset = 0;
 	}
 
 	public byte readSignedByteA() {
-		return (byte) (buffer[currentOffset++] - 128);
+		return (byte) (this.buffer[this.currentOffset++] - 128);
 	}
 
 	public byte readSignedByteC() {
-		return (byte) (-buffer[currentOffset++]);
+		return (byte) (-this.buffer[this.currentOffset++]);
 	}
 
 	public byte readSignedByteS() {
-		return (byte) (128 - buffer[currentOffset++]);
+		return (byte) (128 - this.buffer[this.currentOffset++]);
 	}
 
 	public int readUnsignedByteA() {
-		return buffer[currentOffset++] - 128 & 0xff;
+		return (this.buffer[this.currentOffset++] - 128) & 0xff;
 	}
 
 	public int readUnsignedByteC() {
-		return -buffer[currentOffset++] & 0xff;
+		return -this.buffer[this.currentOffset++] & 0xff;
 	}
 
 	public int readUnsignedByteS() {
-		return 128 - buffer[currentOffset++] & 0xff;
+		return (128 - this.buffer[this.currentOffset++]) & 0xff;
 	}
 
-	public void writeByteA(int i) {
-		ensureCapacity(1);
-		buffer[currentOffset++] = (byte) (i + 128);
+	public void writeByteA(final int i) {
+		this.ensureCapacity(1);
+		this.buffer[this.currentOffset++] = (byte) (i + 128);
 	}
 
-	public void writeByteS(int i) {
-		ensureCapacity(1);
-		buffer[currentOffset++] = (byte) (128 - i);
+	public void writeByteS(final int i) {
+		this.ensureCapacity(1);
+		this.buffer[this.currentOffset++] = (byte) (128 - i);
 	}
 
-	public void writeByteC(int i) {
-		ensureCapacity(1);
-		buffer[currentOffset++] = (byte) (-i);
+	public void writeByteC(final int i) {
+		this.ensureCapacity(1);
+		this.buffer[this.currentOffset++] = (byte) (-i);
 	}
 
 	public int readSignedWordBigEndian() {
-		currentOffset += 2;
-		int i = ((buffer[currentOffset - 1] & 0xff) << 8) + (buffer[currentOffset - 2] & 0xff);
-		if (i > 32767)
+		this.currentOffset += 2;
+		int i = ((this.buffer[this.currentOffset - 1] & 0xff) << 8) + (this.buffer[this.currentOffset - 2] & 0xff);
+		if (i > 32767) {
 			i -= 0x10000;
+		}
 		return i;
 	}
 
 	public int readSignedWordA() {
-		currentOffset += 2;
-		int i = ((buffer[currentOffset - 2] & 0xff) << 8) + (buffer[currentOffset - 1] - 128 & 0xff);
-		if (i > 32767)
+		this.currentOffset += 2;
+		int i = ((this.buffer[this.currentOffset - 2] & 0xff) << 8) + ((this.buffer[this.currentOffset - 1] - 128) & 0xff);
+		if (i > 32767) {
 			i -= 0x10000;
+		}
 		return i;
 	}
 
 	public int readSignedWordBigEndianA() {
-		currentOffset += 2;
-		int i = ((buffer[currentOffset - 1] & 0xff) << 8) + (buffer[currentOffset - 2] - 128 & 0xff);
-		if (i > 32767)
+		this.currentOffset += 2;
+		int i = ((this.buffer[this.currentOffset - 1] & 0xff) << 8) + ((this.buffer[this.currentOffset - 2] - 128) & 0xff);
+		if (i > 32767) {
 			i -= 0x10000;
+		}
 		return i;
 	}
 
 	public int readUnsignedWordBigEndian() {
-		currentOffset += 2;
-		return ((buffer[currentOffset - 1] & 0xff) << 8) + (buffer[currentOffset - 2] & 0xff);
+		this.currentOffset += 2;
+		return ((this.buffer[this.currentOffset - 1] & 0xff) << 8) + (this.buffer[this.currentOffset - 2] & 0xff);
 	}
 
 	public int readUnsignedWordA() {
-		currentOffset += 2;
-		return ((buffer[currentOffset - 2] & 0xff) << 8) + (buffer[currentOffset - 1] - 128 & 0xff);
+		this.currentOffset += 2;
+		return ((this.buffer[this.currentOffset - 2] & 0xff) << 8) + ((this.buffer[this.currentOffset - 1] - 128) & 0xff);
 	}
 
 	public int readUnsignedWordBigEndianA() {
-		currentOffset += 2;
-		return ((buffer[currentOffset - 1] & 0xff) << 8) + (buffer[currentOffset - 2] - 128 & 0xff);
+		this.currentOffset += 2;
+		return ((this.buffer[this.currentOffset - 1] & 0xff) << 8) + ((this.buffer[this.currentOffset - 2] - 128) & 0xff);
 	}
 
-	public void writeWordBigEndianA(int i) {
-		ensureCapacity(2);
-		buffer[currentOffset++] = (byte) (i + 128);
-		buffer[currentOffset++] = (byte) (i >> 8);
+	public void writeWordBigEndianA(final int i) {
+		this.ensureCapacity(2);
+		this.buffer[this.currentOffset++] = (byte) (i + 128);
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
 	}
 
-	public void writeWordA(int i) {
-		ensureCapacity(2);
-		buffer[currentOffset++] = (byte) (i >> 8);
-		buffer[currentOffset++] = (byte) (i + 128);
+	public void writeWordA(final int i) {
+		this.ensureCapacity(2);
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
+		this.buffer[this.currentOffset++] = (byte) (i + 128);
 	}
 
-	public void writeWordBigEndian_dup(int i) {
-		ensureCapacity(2);
-		buffer[currentOffset++] = (byte) i;
-		buffer[currentOffset++] = (byte) (i >> 8);
+	public void writeWordBigEndian_dup(final int i) {
+		this.ensureCapacity(2);
+		this.buffer[this.currentOffset++] = (byte) i;
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
 	}
 
 	public int readDWord_v1() {
-		currentOffset += 4;
-		return ((buffer[currentOffset - 2] & 0xff) << 24) + ((buffer[currentOffset - 1] & 0xff) << 16) + ((buffer[currentOffset - 4] & 0xff) << 8)
-				+ (buffer[currentOffset - 3] & 0xff);
+		this.currentOffset += 4;
+		return ((this.buffer[this.currentOffset - 2] & 0xff) << 24) + ((this.buffer[this.currentOffset - 1] & 0xff) << 16) + ((this.buffer[this.currentOffset - 4] & 0xff) << 8)
+				+ (this.buffer[this.currentOffset - 3] & 0xff);
 	}
 
 	public int readDWord_v2() {
-		currentOffset += 4;
-		return ((buffer[currentOffset - 3] & 0xff) << 24) + ((buffer[currentOffset - 4] & 0xff) << 16) + ((buffer[currentOffset - 1] & 0xff) << 8)
-				+ (buffer[currentOffset - 2] & 0xff);
+		this.currentOffset += 4;
+		return ((this.buffer[this.currentOffset - 3] & 0xff) << 24) + ((this.buffer[this.currentOffset - 4] & 0xff) << 16) + ((this.buffer[this.currentOffset - 1] & 0xff) << 8)
+				+ (this.buffer[this.currentOffset - 2] & 0xff);
 	}
 
-	public void writeDWord_v1(int i) {
-		ensureCapacity(4);
-		buffer[currentOffset++] = (byte) (i >> 8);
-		buffer[currentOffset++] = (byte) i;
-		buffer[currentOffset++] = (byte) (i >> 24);
-		buffer[currentOffset++] = (byte) (i >> 16);
+	public void writeDWord_v1(final int i) {
+		this.ensureCapacity(4);
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
+		this.buffer[this.currentOffset++] = (byte) i;
+		this.buffer[this.currentOffset++] = (byte) (i >> 24);
+		this.buffer[this.currentOffset++] = (byte) (i >> 16);
 	}
 
-	public void writeDWord_v2(int i) {
-		ensureCapacity(4);
-		buffer[currentOffset++] = (byte) (i >> 16);
-		buffer[currentOffset++] = (byte) (i >> 24);
-		buffer[currentOffset++] = (byte) i;
-		buffer[currentOffset++] = (byte) (i >> 8);
+	public void writeDWord_v2(final int i) {
+		this.ensureCapacity(4);
+		this.buffer[this.currentOffset++] = (byte) (i >> 16);
+		this.buffer[this.currentOffset++] = (byte) (i >> 24);
+		this.buffer[this.currentOffset++] = (byte) i;
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
 	}
 
-	public void readBytes_reverse(byte abyte0[], int i, int j) {
-		for (int k = (j + i) - 1; k >= j; k--)
-			abyte0[k] = buffer[currentOffset++];
-
-	}
-
-	public void writeBytes_reverse(byte abyte0[], int i, int j) {
-		ensureCapacity(i);
-		for (int k = (j + i) - 1; k >= j; k--)
-			buffer[currentOffset++] = abyte0[k];
+	public void readBytes_reverse(final byte abyte0[], final int i, final int j) {
+		for (int k = (j + i) - 1; k >= j; k--) {
+			abyte0[k] = this.buffer[this.currentOffset++];
+		}
 
 	}
 
-	public void readBytes_reverseA(byte abyte0[], int i, int j) {
-		ensureCapacity(i);
-		for (int k = (j + i) - 1; k >= j; k--)
-			abyte0[k] = (byte) (buffer[currentOffset++] - 128);
+	public void writeBytes_reverse(final byte abyte0[], final int i, final int j) {
+		this.ensureCapacity(i);
+		for (int k = (j + i) - 1; k >= j; k--) {
+			this.buffer[this.currentOffset++] = abyte0[k];
+		}
 
 	}
 
-	public void writeBytes_reverseA(byte abyte0[], int i, int j) {
-		ensureCapacity(i);
-		for (int k = (j + i) - 1; k >= j; k--)
-			buffer[currentOffset++] = (byte) (abyte0[k] + 128);
+	public void readBytes_reverseA(final byte abyte0[], final int i, final int j) {
+		this.ensureCapacity(i);
+		for (int k = (j + i) - 1; k >= j; k--) {
+			abyte0[k] = (byte) (this.buffer[this.currentOffset++] - 128);
+		}
 
 	}
 
-	public void createFrame(int id) {
-		ensureCapacity(1);
-		buffer[currentOffset++] = (byte) (id + packetEncryption.getNextValue());
+	public void writeBytes_reverseA(final byte abyte0[], final int i, final int j) {
+		this.ensureCapacity(i);
+		for (int k = (j + i) - 1; k >= j; k--) {
+			this.buffer[this.currentOffset++] = (byte) (abyte0[k] + 128);
+		}
+
+	}
+
+	public void createFrame(final int id) {
+		this.ensureCapacity(1);
+		this.buffer[this.currentOffset++] = (byte) (id + this.packetEncryption.getNextKey());
 	}
 
 	private static final int frameStackSize = 10;
 	private int frameStackPtr = -1;
-	private int frameStack[] = new int[frameStackSize];
+	private final int frameStack[] = new int[Stream.frameStackSize];
 
-	public void createFrameVarSize(int id) {
-		ensureCapacity(3);
-		buffer[currentOffset++] = (byte) (id + packetEncryption.getNextValue());
-		buffer[currentOffset++] = 0;
-		if (frameStackPtr >= frameStackSize - 1) {
+	public void createFrameVarSize(final int id) {
+		this.ensureCapacity(3);
+		this.buffer[this.currentOffset++] = (byte) (id + this.packetEncryption.getNextKey());
+		this.buffer[this.currentOffset++] = 0;
+		if (this.frameStackPtr >= (Stream.frameStackSize - 1)) {
 			throw new RuntimeException("Stack overflow");
-		} else
-			frameStack[++frameStackPtr] = currentOffset;
+		} else {
+			this.frameStack[++this.frameStackPtr] = this.currentOffset;
+		}
 	}
 
-	public void createFrameVarSizeWord(int id) {
-		ensureCapacity(2);
-		buffer[currentOffset++] = (byte) (id + packetEncryption.getNextValue());
-		writeWord(0);
-		if (frameStackPtr >= frameStackSize - 1) {
+	public void createFrameVarSizeWord(final int id) {
+		this.ensureCapacity(2);
+		this.buffer[this.currentOffset++] = (byte) (id + this.packetEncryption.getNextKey());
+		this.writeWord(0);
+		if (this.frameStackPtr >= (Stream.frameStackSize - 1)) {
 			throw new RuntimeException("Stack overflow");
-		} else
-			frameStack[++frameStackPtr] = currentOffset;
+		} else {
+			this.frameStack[++this.frameStackPtr] = this.currentOffset;
+		}
 	}
 
 	public void endFrameVarSize() {
-		if (frameStackPtr < 0)
+		if (this.frameStackPtr < 0) {
 			throw new RuntimeException("Stack empty");
-		else
-			writeFrameSize(currentOffset - frameStack[frameStackPtr--]);
+		} else {
+			this.writeFrameSize(this.currentOffset - this.frameStack[this.frameStackPtr--]);
+		}
 	}
 
 	public void endFrameVarSizeWord() {
-		if (frameStackPtr < 0)
+		if (this.frameStackPtr < 0) {
 			throw new RuntimeException("Stack empty");
-		else
-			writeFrameSizeWord(currentOffset - frameStack[frameStackPtr--]);
+		} else {
+			this.writeFrameSizeWord(this.currentOffset - this.frameStack[this.frameStackPtr--]);
+		}
 	}
 
-	public void writeByte(int i) {
-		ensureCapacity(1);
-		buffer[currentOffset++] = (byte) i;
+	public void writeByte(final int i) {
+		this.ensureCapacity(1);
+		this.buffer[this.currentOffset++] = (byte) i;
 	}
 
-	public void writeWord(int i) {
-		ensureCapacity(2);
-		buffer[currentOffset++] = (byte) (i >> 8);
-		buffer[currentOffset++] = (byte) i;
+	public void writeWord(final int i) {
+		this.ensureCapacity(2);
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
+		this.buffer[this.currentOffset++] = (byte) i;
 	}
 
-	public void writeWordBigEndian(int i) {
-		ensureCapacity(2);
-		buffer[currentOffset++] = (byte) i;
-		buffer[currentOffset++] = (byte) (i >> 8);
+	public void writeWordBigEndian(final int i) {
+		this.ensureCapacity(2);
+		this.buffer[this.currentOffset++] = (byte) i;
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
 	}
 
-	public void write3Byte(int i) {
-		ensureCapacity(3);
-		buffer[currentOffset++] = (byte) (i >> 16);
-		buffer[currentOffset++] = (byte) (i >> 8);
-		buffer[currentOffset++] = (byte) i;
+	public void write3Byte(final int i) {
+		this.ensureCapacity(3);
+		this.buffer[this.currentOffset++] = (byte) (i >> 16);
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
+		this.buffer[this.currentOffset++] = (byte) i;
 	}
 
-	public void writeDWord(int i) {
-		ensureCapacity(4);
-		buffer[currentOffset++] = (byte) (i >> 24);
-		buffer[currentOffset++] = (byte) (i >> 16);
-		buffer[currentOffset++] = (byte) (i >> 8);
-		buffer[currentOffset++] = (byte) i;
+	public void writeDWord(final int i) {
+		this.ensureCapacity(4);
+		this.buffer[this.currentOffset++] = (byte) (i >> 24);
+		this.buffer[this.currentOffset++] = (byte) (i >> 16);
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
+		this.buffer[this.currentOffset++] = (byte) i;
 	}
 
-	public void writeDWordBigEndian(int i) {
-		ensureCapacity(4);
-		buffer[currentOffset++] = (byte) i;
-		buffer[currentOffset++] = (byte) (i >> 8);
-		buffer[currentOffset++] = (byte) (i >> 16);
-		buffer[currentOffset++] = (byte) (i >> 24);
+	public void writeDWordBigEndian(final int i) {
+		this.ensureCapacity(4);
+		this.buffer[this.currentOffset++] = (byte) i;
+		this.buffer[this.currentOffset++] = (byte) (i >> 8);
+		this.buffer[this.currentOffset++] = (byte) (i >> 16);
+		this.buffer[this.currentOffset++] = (byte) (i >> 24);
 	}
 
-	public void writeQWord(long l) {
-		ensureCapacity(8);
-		buffer[currentOffset++] = (byte) (int) (l >> 56);
-		buffer[currentOffset++] = (byte) (int) (l >> 48);
-		buffer[currentOffset++] = (byte) (int) (l >> 40);
-		buffer[currentOffset++] = (byte) (int) (l >> 32);
-		buffer[currentOffset++] = (byte) (int) (l >> 24);
-		buffer[currentOffset++] = (byte) (int) (l >> 16);
-		buffer[currentOffset++] = (byte) (int) (l >> 8);
-		buffer[currentOffset++] = (byte) (int) l;
+	public void writeQWord(final long l) {
+		this.ensureCapacity(8);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 56);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 48);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 40);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 32);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 24);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 16);
+		this.buffer[this.currentOffset++] = (byte) (int) (l >> 8);
+		this.buffer[this.currentOffset++] = (byte) (int) l;
 	}
 
-	public void writeString(java.lang.String s) {
-		ensureCapacity(s.length());
-		System.arraycopy(s.getBytes(), 0, buffer, currentOffset, s.length());
-		currentOffset += s.length();
-		buffer[currentOffset++] = 10;
+	public void writeString(final java.lang.String s) {
+		this.ensureCapacity(s.length());
+		System.arraycopy(s.getBytes(), 0, this.buffer, this.currentOffset, s.length());
+		this.currentOffset += s.length();
+		this.buffer[this.currentOffset++] = 10;
 	}
 
-	public void writeBytes(byte abyte0[], int i, int j) {
-		ensureCapacity(i);
-		for (int k = j; k < j + i; k++)
-			buffer[currentOffset++] = abyte0[k];
+	public void writeBytes(final byte abyte0[], final int i, final int j) {
+		this.ensureCapacity(i);
+		for (int k = j; k < (j + i); k++) {
+			this.buffer[this.currentOffset++] = abyte0[k];
+		}
 	}
 
-	public void writeFrameSize(int i) {
-		buffer[currentOffset - i - 1] = (byte) i;
+	public void writeFrameSize(final int i) {
+		this.buffer[this.currentOffset - i - 1] = (byte) i;
 	}
 
-	public void writeFrameSizeWord(int i) {
-		buffer[currentOffset - i - 2] = (byte) (i >> 8);
-		buffer[currentOffset - i - 1] = (byte) i;
+	public void writeFrameSizeWord(final int i) {
+		this.buffer[this.currentOffset - i - 2] = (byte) (i >> 8);
+		this.buffer[this.currentOffset - i - 1] = (byte) i;
 	}
 
 	public int readUnsignedByte() {
-		return buffer[currentOffset++] & 0xff;
+		return this.buffer[this.currentOffset++] & 0xff;
 	}
 
 	public byte readSignedByte() {
-		return buffer[currentOffset++];
+		return this.buffer[this.currentOffset++];
 	}
 
 	public int readUnsignedWord() {
-		currentOffset += 2;
-		return ((buffer[currentOffset - 2] & 0xff) << 8)
-				+ (buffer[currentOffset - 1] & 0xff);
+		this.currentOffset += 2;
+		return ((this.buffer[this.currentOffset - 2] & 0xff) << 8)
+				+ (this.buffer[this.currentOffset - 1] & 0xff);
 	}
 
 	public int readSignedWord() {
-		currentOffset += 2;
-		int i = ((buffer[currentOffset - 2] & 0xff) << 8) + (buffer[currentOffset - 1] & 0xff);
-		if (i > 32767)
+		this.currentOffset += 2;
+		int i = ((this.buffer[this.currentOffset - 2] & 0xff) << 8) + (this.buffer[this.currentOffset - 1] & 0xff);
+		if (i > 32767) {
 			i -= 0x10000;
+		}
 		return i;
 	}
 
 	public int readDWord() {
-		currentOffset += 4;
-		return ((buffer[currentOffset - 4] & 0xff) << 24) + ((buffer[currentOffset - 3] & 0xff) << 16) + ((buffer[currentOffset - 2] & 0xff) << 8)
-				+ (buffer[currentOffset - 1] & 0xff);
+		this.currentOffset += 4;
+		return ((this.buffer[this.currentOffset - 4] & 0xff) << 24) + ((this.buffer[this.currentOffset - 3] & 0xff) << 16) + ((this.buffer[this.currentOffset - 2] & 0xff) << 8)
+				+ (this.buffer[this.currentOffset - 1] & 0xff);
 	}
 
 	public long readQWord() {
-		long l = (long) readDWord() & 0xffffffffL;
-		long l1 = (long) readDWord() & 0xffffffffL;
+		final long l = this.readDWord() & 0xffffffffL;
+		final long l1 = this.readDWord() & 0xffffffffL;
 		return (l << 32) + l1;
 	}
 
 	public java.lang.String readString() {
-		final int i = currentOffset;
-		while (buffer[currentOffset++] != 10) {
+		final int i = this.currentOffset;
+		while (this.buffer[this.currentOffset++] != 10) {
 			;
 		}
-		return new String(buffer, i, currentOffset - i - 1);
+		return new String(this.buffer, i, this.currentOffset - i - 1);
 	}
 
-	public void readBytes(byte abyte0[], int i, int j) {
-		for (int k = j; k < j + i; k++)
-			abyte0[k] = buffer[currentOffset++];
+	public void readBytes(final byte abyte0[], final int i, final int j) {
+		for (int k = j; k < (j + i); k++) {
+			abyte0[k] = this.buffer[this.currentOffset++];
+		}
 
 	}
 
 	public void initBitAccess() {
-		bitPosition = currentOffset * 8;
+		this.bitPosition = this.currentOffset * 8;
 	}
 
-	public void writeBits(int numBits, int value) {
-		ensureCapacity(((int) Math.ceil(numBits * 8)) * 4);
-		int bytePos = bitPosition >> 3;
-		int bitOffset = 8 - (bitPosition & 7);
-		bitPosition += numBits;
+	public void writeBits(int numBits, final int value) {
+		this.ensureCapacity(((int) Math.ceil(numBits * 8)) * 4);
+		int bytePos = this.bitPosition >> 3;
+		int bitOffset = 8 - (this.bitPosition & 7);
+		this.bitPosition += numBits;
 
 		for (; numBits > bitOffset; bitOffset = 8) {
-			buffer[bytePos] &= ~bitMaskOut[bitOffset];
-			buffer[bytePos++] |= (value >> (numBits - bitOffset)) & bitMaskOut[bitOffset];
+			this.buffer[bytePos] &= ~Stream.bitMaskOut[bitOffset];
+			this.buffer[bytePos++] |= (value >> (numBits - bitOffset)) & Stream.bitMaskOut[bitOffset];
 
 			numBits -= bitOffset;
 		}
 		if (numBits == bitOffset) {
-			buffer[bytePos] &= ~bitMaskOut[bitOffset];
-			buffer[bytePos] |= value & bitMaskOut[bitOffset];
+			this.buffer[bytePos] &= ~Stream.bitMaskOut[bitOffset];
+			this.buffer[bytePos] |= value & Stream.bitMaskOut[bitOffset];
 		} else {
-			buffer[bytePos] &= ~(bitMaskOut[numBits] << (bitOffset - numBits));
-			buffer[bytePos] |= (value & bitMaskOut[numBits]) << (bitOffset - numBits);
+			this.buffer[bytePos] &= ~(Stream.bitMaskOut[numBits] << (bitOffset - numBits));
+			this.buffer[bytePos] |= (value & Stream.bitMaskOut[numBits]) << (bitOffset - numBits);
 		}
 	}
 
 	public void finishBitAccess() {
-		currentOffset = (bitPosition + 7) / 8;
+		this.currentOffset = (this.bitPosition + 7) / 8;
 	}
 
-	public byte buffer[] = null;
-	public int currentOffset = 0;
-	public int bitPosition = 0;
-
-	public static int bitMaskOut[] = new int[32];
 	static {
-		for (int i = 0; i < 32; i++)
-			bitMaskOut[i] = (1 << i) - 1;
+		for (int i = 0; i < 32; i++) {
+			Stream.bitMaskOut[i] = (1 << i) - 1;
+		}
 	}
 
-	public void ensureCapacity(int len) {
-		if ((currentOffset + len + 1) >= buffer.length) {
-			byte[] oldBuffer = buffer;
-			int newLength = (buffer.length * 2);
-			buffer = new byte[newLength];
-			System.arraycopy(oldBuffer, 0, buffer, 0, oldBuffer.length);
-			ensureCapacity(len);
+	public void ensureCapacity(final int len) {
+		if ((this.currentOffset + len + 1) >= this.buffer.length) {
+			final byte[] oldBuffer = this.buffer;
+			final int newLength = (this.buffer.length * 2);
+			this.buffer = new byte[newLength];
+			System.arraycopy(oldBuffer, 0, this.buffer, 0, oldBuffer.length);
+			this.ensureCapacity(len);
 		}
 	}
 
 	public void reset() {
-		if (!(currentOffset > 5000)) {
-			byte[] oldBuffer = buffer;
-			buffer = new byte[5000]; // CHECK!
-			for (int i = 0; i < currentOffset; i++) {
-				buffer[i] = oldBuffer[i];
+		if (!(this.currentOffset > 5000)) {
+			final byte[] oldBuffer = this.buffer;
+			this.buffer = new byte[5000]; // CHECK!
+			for (int i = 0; i < this.currentOffset; i++) {
+				this.buffer[i] = oldBuffer[i];
 			}
 		}
 	}
-
-	public ISAACCipher packetEncryption = null;
-
 }

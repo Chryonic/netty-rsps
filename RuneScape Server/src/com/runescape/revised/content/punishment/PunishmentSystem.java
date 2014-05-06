@@ -1,6 +1,11 @@
 package com.runescape.revised.content.punishment;
 
-public class PunishmentSystem {
+import com.runescape.revised.system.System;
 
+public class PunishmentSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }

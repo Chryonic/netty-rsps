@@ -1,5 +1,5 @@
 package com.runescape.revised.logic.entity;
 
-public class EntityList {
+public class EntityList<E> {
 
 }

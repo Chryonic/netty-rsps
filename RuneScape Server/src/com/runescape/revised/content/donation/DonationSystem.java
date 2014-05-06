@@ -1,6 +1,11 @@
 package com.runescape.revised.content.donation;
 
-public class DonationSystem {
+import com.runescape.revised.system.System;
 
+public class DonationSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }
