@@ -15,7 +15,7 @@ public class TabAreaSystem {
 	 * @return tab
 	 * 			The tab you are viewing.
 	 */
-	public Tab getTab() {
+	public Tab getCurrentTab() {
 		return null;
 	}
 }

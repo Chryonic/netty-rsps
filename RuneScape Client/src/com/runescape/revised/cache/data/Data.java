@@ -1,4 +1,4 @@
-package com.runescape.revised.cachearchive.data;
+package com.runescape.revised.cache.data;
 
 public abstract class Data {
 

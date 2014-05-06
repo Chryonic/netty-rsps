@@ -1,5 +1,7 @@
 package com.runescape.revised;
 
+import com.runescape.revised.system.System;
+
 /**
  * The keyboard system to allow the usage
  * of chatting.
@@ -7,6 +9,10 @@ package com.runescape.revised;
  * @author Josh
  *
  */
-public class KeySystem {
+public class KeySystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }
