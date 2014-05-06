@@ -1,6 +1,6 @@
 package com.runescape.revised.logic.net.io;
 
-import com.runescape.util.ISAACRandomGen;
+import com.runescape.revised.logic.encryption.ISAACRandomGen;
 
 public class IoPacketBuffer {
 

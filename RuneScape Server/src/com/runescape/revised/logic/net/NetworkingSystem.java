@@ -4,4 +4,8 @@ import com.runescape.revised.system.System;
 
 public class NetworkingSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }

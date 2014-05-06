@@ -2,6 +2,7 @@ package com.runescape.revised.logic.net.packets.read;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
 import com.runescape.revised.logic.net.packets.VariableType;
 import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
@@ -12,7 +13,7 @@ public class IdleLogout extends GamePacket {
 	 * @see com.runescape.revised.logic.net.packets.Packet#executePacket(org.jboss.netty.channel.Channel)
 	 */
 	@Override
-	public void executePacket(Channel channel) {}
+	public void executePacket(final Channel channel) {}
 
 	/*
 	 * (non-Javadoc)
@@ -39,5 +40,15 @@ public class IdleLogout extends GamePacket {
 	@Override
 	public VariableType getVariableType() {
 		return VariableType.FIXED;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getPriority()
+	 */
+	@Override
+	public Priority getPriority() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

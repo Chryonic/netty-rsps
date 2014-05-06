@@ -7,7 +7,12 @@ public class QuestSystem extends System {
 	private static QuestSystem questSystem;
 	private short questPoints;
 
-	public static void setQuestSystem(QuestSystem questSystem) {
+	@Override
+	public void executeSystem() {
+
+	}
+
+	public static void setQuestSystem(final QuestSystem questSystem) {
 		QuestSystem.questSystem = questSystem;
 	}
 
@@ -15,7 +20,7 @@ public class QuestSystem extends System {
 		return QuestSystem.questSystem;
 	}
 
-	public void setQuestPoints(short questPoints) {
+	public void setQuestPoints(final short questPoints) {
 		this.questPoints = questPoints;
 	}
 

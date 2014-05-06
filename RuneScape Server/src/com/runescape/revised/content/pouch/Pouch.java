@@ -1,6 +1,5 @@
 package com.runescape.revised.content.pouch;
 
-public class Pouch {
-
+public class Pouch<Item> {
 
 }

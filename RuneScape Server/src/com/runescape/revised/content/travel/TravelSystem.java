@@ -1,6 +1,11 @@
 package com.runescape.revised.content.travel;
 
-public class TravelSystem {
+import com.runescape.revised.system.System;
 
+public class TravelSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }

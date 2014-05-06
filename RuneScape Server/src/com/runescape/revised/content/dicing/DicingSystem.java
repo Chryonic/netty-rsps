@@ -1,5 +1,11 @@
 package com.runescape.revised.content.dicing;
 
-public class DicingSystem {
+import com.runescape.revised.system.System;
 
+public class DicingSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

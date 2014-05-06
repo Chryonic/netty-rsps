@@ -1,5 +1,11 @@
 package com.runescape.revised.content.hiscores;
 
-public class HiScoresSystem {
+import com.runescape.revised.system.System;
 
+public class HiScoresSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

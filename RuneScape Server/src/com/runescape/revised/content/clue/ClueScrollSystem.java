@@ -6,7 +6,12 @@ public class ClueScrollSystem extends System {
 
 	private ClueScroll clueScroll;
 
-	public void setClueScroll(ClueScroll clueScroll) {
+	@Override
+	public void executeSystem() {
+
+	}
+
+	public void setClueScroll(final ClueScroll clueScroll) {
 		this.clueScroll = clueScroll;
 	}
 

@@ -7,6 +7,7 @@ import com.runescape.revised.logic.cycle.CycleSystem;
 import com.runescape.revised.logic.cycle.impl.ServerCycle;
 import com.runescape.revised.logic.net.io.Io;
 import com.runescape.revised.server.GameServer;
+import com.runescape.revised.system.area.AreaSystem;
 
 /**
  * The main class that starts everything
@@ -23,12 +24,12 @@ public class Main {
 	private static Main main;
 
 	/**
-	 * The game server instance.
+	 * The GameServer instance.
 	 */
 	private GameServer gameServer;
 
 	/**
-	 * The garbage collector instance.
+	 * The GarbageCollector instance.
 	 */
 	private GarbageCollector garbageCollector;
 
@@ -38,9 +39,12 @@ public class Main {
 	// private Netty netty;
 
 	/**
-	 * The io instance.
+	 * The Io instance.
 	 */
 	private Io io;
+
+	/** private LWThread<Content> contentThread;
+	private LWThread<Logic> logicThread; */
 
 	/**
 	 * The constructor.
@@ -56,13 +60,24 @@ public class Main {
 		// this.setNetty(new Netty());
 
 		/* Setup the Cycle based system for processes. */
-		CycleSystem.getCycleSystem().addCycle(new ServerCycle());
+		CycleSystem.getCycleSystem().addCycle(new ServerCycle(), 0);
 
 		/* Setup the Io networking. */
 		this.setIo(new Io());
 
 		/* Setup the GameServer. */
 		this.setGameServer(new GameServer());
+
+		/*
+		 * Create a new Thread with a new, lazy initialization of AreaSystem
+		 * and start it up.
+		 */
+		new Thread(AreaSystem.getAreaSystem()).start();
+
+		/** public static void main(final String[] args) {
+			final Chainable chainable = new System();
+			chainable.add(new ItemSystem()).add(new ContentSystem());
+		} */
 	}
 
 	/**

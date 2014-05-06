@@ -2,6 +2,7 @@ package com.runescape.revised.logic.net.packets.read;
 
 import org.jboss.netty.channel.Channel;
 
+import com.runescape.revised.Priority;
 import com.runescape.revised.logic.net.packets.VariableType;
 import com.runescape.revised.logic.net.packets.codec.game.GamePacket;
 
@@ -12,14 +13,14 @@ public class CharacterDesignScreen extends GamePacket {
 	 * @see com.runescape.revised.logic.net.packets.Packet#executePacket(org.jboss.netty.channel.Channel)
 	 */
 	@Override
-	public void executePacket(Channel channel) {
+	public void executePacket(final Channel channel) {
 		// TODO Auto-generated method stub
 		// stream.writeWordBigEndian(aBoolean1047 ? 0 : 1);
 		// for(int i1 = 0; i1 < 7; i1++)
-			// stream.writeWordBigEndian(anIntArray1065[i1]);
+		// stream.writeWordBigEndian(anIntArray1065[i1]);
 
 		// for(int l1 = 0; l1 < 5; l1++)
-			// stream.writeWordBigEndian(anIntArray990[l1]);
+		// stream.writeWordBigEndian(anIntArray990[l1]);
 	}
 
 	/*
@@ -50,5 +51,15 @@ public class CharacterDesignScreen extends GamePacket {
 	public VariableType getVariableType() {
 		// TODO Auto-generated method stub
 		return VariableType.FIXED;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.runescape.revised.logic.net.packets.Packet#getPriority()
+	 */
+	@Override
+	public Priority getPriority() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -5,16 +5,14 @@ import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.handler.codec.frame.FrameDecoder;
 
-import com.runescape.util.ISAACCipher;
-
 public class GameDecoder extends FrameDecoder {
-	
-	public GameDecoder(ISAACCipher in) {
-		
+
+	public GameDecoder() {
+
 	}
 
 	@Override
-	protected Object decode(ChannelHandlerContext chc, Channel channel, ChannelBuffer channelBuffer) throws Exception {
+	protected Object decode(final ChannelHandlerContext chc, final Channel channel, final ChannelBuffer channelBuffer) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

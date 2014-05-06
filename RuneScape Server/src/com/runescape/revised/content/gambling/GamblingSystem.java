@@ -1,5 +1,11 @@
 package com.runescape.revised.content.gambling;
 
-public class GamblingSystem {
+import com.runescape.revised.system.System;
 
+public class GamblingSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

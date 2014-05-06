@@ -6,7 +6,12 @@ public class RandomEventSystem extends System {
 
 	private static RandomEventSystem randomEventSystem;
 
-	public static void setRandomEventSystem(RandomEventSystem randomEventSystem) {
+	@Override
+	public void executeSystem() {
+
+	}
+
+	public static void setRandomEventSystem(final RandomEventSystem randomEventSystem) {
 		RandomEventSystem.randomEventSystem = randomEventSystem;
 	}
 

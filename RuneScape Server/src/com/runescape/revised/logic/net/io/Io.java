@@ -5,7 +5,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-import com.runescape.util.Timer;
+import com.runescape.Constants;
+import com.runescape.revised.util.Timer;
 
 /**
  * We'll be using a regular input/output
@@ -44,7 +45,7 @@ public class Io {
 	public Io() {
 		final Timer timer = new Timer();
 		try {
-			this.setServerSocket(new ServerSocket(43594, 1, null));
+			this.setServerSocket(new ServerSocket(Constants.PORT, 1, null));
 			System.out.println("RuneScape Server started in " + timer.toString());
 			while (this.isRunning()) {
 				this.setSocket(this.getServerSocket().accept());

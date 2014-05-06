@@ -1,5 +1,11 @@
 package com.runescape.revised.content.jail;
 
-public class JailSystem {
+import com.runescape.revised.system.System;
 
+public class JailSystem extends System {
+
+	@Override
+	public void executeSystem() {
+
+	}
 }

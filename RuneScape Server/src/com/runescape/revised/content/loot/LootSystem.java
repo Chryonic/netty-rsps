@@ -1,6 +1,11 @@
 package com.runescape.revised.content.loot;
 
-public class LootSystem {
+import com.runescape.revised.system.System;
 
+public class LootSystem extends System {
 
+	@Override
+	public void executeSystem() {
+
+	}
 }
